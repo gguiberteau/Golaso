@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="@string/icon_partidos"
+        android:id="@+id/partidos"
+        android:icon="@drawable/ic_partidos"
+        />
+    <item
+        android:title="@string/icon_fav"
+        android:id="@+id/favoritos"
+        android:icon="@drawable/ic_favoritos"
+        />
+    <item
+        android:title="@string/icon_clasificacion"
+        android:id="@+id/clasificacion"
+        android:icon="@drawable/ic_clasificacion"
+        />
+    <item
+        android:title="@string/icon_perfil"
+        android:id="@+id/perfil"
+        android:icon="@drawable/ic_perfil"
+        />
+</menu>
