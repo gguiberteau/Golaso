@@ -8,21 +8,21 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="es.unex.giiis.golaso.ui.partidos.PartidosFragment"
-        android:label="fragment_partidos"
+        android:label="@string/icon_partidos"
         tools:layout="@layout/fragment_partidos" />
     <fragment
         android:id="@+id/nav_fav"
         android:name="es.unex.giiis.golaso.ui.favoritos.FavoritosFragment"
-        android:label="fragment_favoritos"
+        android:label="@string/icon_fav"
         tools:layout="@layout/fragment_favoritos" />
     <fragment
         android:id="@+id/nav_profile"
         android:name="es.unex.giiis.golaso.ui.perfil.PerfilFragment"
-        android:label="fragment_perfil"
+        android:label="@string/icon_perfil"
         tools:layout="@layout/fragment_perfil" />
     <fragment
         android:id="@+id/nav_table"
         android:name="es.unex.giiis.golaso.ui.clasificacion.ClasificacionFragment"
-        android:label="fragment_clasificacion"
+        android:label="@string/icon_clasificacion"
         tools:layout="@layout/fragment_clasificacion" />
 </navigation>
