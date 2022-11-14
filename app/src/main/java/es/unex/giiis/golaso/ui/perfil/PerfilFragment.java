@@ -1,4 +1,4 @@
-package es.unex.giiis.golaso.ui.favoritos;
+package es.unex.giiis.golaso.ui.perfil;
 
 import android.os.Bundle;
 
@@ -9,22 +9,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import es.unex.giiis.golaso.databinding.FragmentFavoritosBinding;
+import es.unex.giiis.golaso.databinding.FragmentPerfilBinding;
 
-public class FavoritosFragment extends Fragment {
+public class PerfilFragment extends Fragment {
 
-    private FragmentFavoritosBinding binding;
+    private FragmentPerfilBinding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentFavoritosBinding.inflate(inflater, container, false);
+
+        binding = FragmentPerfilBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textFavoritos;
-        textView.setText("Este es el FavoritosFragment");
+        final TextView textView = binding.textPerfil;
+        textView.setText("Este es el PerfilnFragment");
 
         return root;
-
     }
 }

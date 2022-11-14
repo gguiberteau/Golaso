@@ -1,15 +1,13 @@
 package es.unex.giiis.golaso;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 import android.os.Bundle;
-
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import es.unex.giiis.golaso.databinding.ActivityMainBinding;
-import es.unex.giiis.golaso.ui.favoritos.FavoritosFragment;
-import es.unex.giiis.golaso.ui.partidos.PartidosFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,41 +17,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        replaceFragment(new PartidosFragment()); // Para que este sea la pantalla de inicio
+        BottomNavigationView navView = findViewById(R.id.nav_view);
 
-        binding.bottomNavigationView.setOnItemReselectedListener(item -> {
+        // Passing each menu ID as a set of Ids because each menu should be considered as top
+        // level destinations.
 
-            switch (item.getItemId()){
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_home, R.id.nav_fav, R.id.nav_table, R.id.nav_profile)
+                .build();
 
-                case R.id.partidos:
-                    replaceFragment(new PartidosFragment());
-                    break;
-                case R.id.favoritos:
-                    replaceFragment(new FavoritosFragment());
-                    break;
-                case R.id.clasificacion:
-                    break;
-                case R.id.perfil:
-                    break;
-
-            }
-
-        });
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupWithNavController(binding.navView, navController);
 
     }
-
-    private void replaceFragment(Fragment fragment){
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frameLayout, fragment);
-        fragmentTransaction.commit();
-
-    }
-
 }

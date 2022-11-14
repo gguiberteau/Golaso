@@ -1,4 +1,4 @@
-package es.unex.giiis.golaso.ui.partidos;
+package es.unex.giiis.golaso.ui.clasificacion;
 
 import android.os.Bundle;
 
@@ -10,21 +10,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import es.unex.giiis.golaso.databinding.FragmentPartidosBinding;
+import es.unex.giiis.golaso.databinding.FragmentClasificacionBinding;
 
-public class PartidosFragment extends Fragment {
+public class ClasificacionFragment extends Fragment {
 
-    private FragmentPartidosBinding binding;
+    private FragmentClasificacionBinding binding;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        binding = FragmentPartidosBinding.inflate(inflater, container, false);
+        binding = FragmentClasificacionBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textPartidos;
-        textView.setText("Este es el Home-PartidosFragment");
+        final TextView textView = binding.textClasificacion;
+        textView.setText("Este es el ClasificacionFragment");
 
         return root;
 
