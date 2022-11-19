@@ -4,4 +4,6 @@
     <string name="icon_clasificacion">Clasificación</string>
     <string name="icon_perfil">Perfil</string>
     <string name="icon_partidos">Partidos</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
