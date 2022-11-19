@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import com.google.android.material.tabs.TabLayout;
 
 import es.unex.giiis.golaso.R;
-import es.unex.giiis.golaso.adapter.MyViewPagerAdapter;
 import es.unex.giiis.golaso.databinding.FragmentClasificacionBinding;
 
 public class ClasificacionFragment extends Fragment {
@@ -32,15 +31,6 @@ public class ClasificacionFragment extends Fragment {
 
         tabClas = root.findViewById(R.id.tabClas);
         viewPager = root.findViewById(R.id.viewPager);
-
-        MyViewPagerAdapter mVPA = new MyViewPagerAdapter(this);
-        viewPager.setAdapter(mVPA);
-        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-            @Override
-            public void onPageSelected(int position) {
-                tabClas.selectTab(tabClas.getTabAt(position));
-            }
-        });
 
         tabClas.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
