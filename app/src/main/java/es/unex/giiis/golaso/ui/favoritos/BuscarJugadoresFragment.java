@@ -2,8 +2,9 @@ package es.unex.giiis.golaso.ui.favoritos;
 
 import android.os.Bundle;
 
-import androidx.appcompat.widget.SearchView;
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,15 +19,17 @@ import es.unex.giiis.golaso.R;
 import es.unex.giiis.golaso.adapters.BuscarJugadoresAdapter;
 import es.unex.giiis.golaso.api.jugadores.JugadoresNetworkLoaderRunnable;
 import es.unex.giiis.golaso.databinding.FragmentBuscarJugadoresBinding;
+import es.unex.giiis.golaso.model.Jugador;
+import es.unex.giiis.golaso.ui.elementos.JugadorDetailFragment;
 
 
-public class BuscarJugadoresFragment extends Fragment implements SearchView.OnQueryTextListener {
+public class BuscarJugadoresFragment extends Fragment implements BuscarJugadoresAdapter.OnListInteractionListener {
 
     private FragmentBuscarJugadoresBinding binding;
     private BuscarJugadoresAdapter mAdapter;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         binding = FragmentBuscarJugadoresBinding.inflate(inflater, container, false);
@@ -37,12 +40,9 @@ public class BuscarJugadoresFragment extends Fragment implements SearchView.OnQu
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this.getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        SearchView mSearchView = root.findViewById(R.id.jugadoresSearchView);
-        mSearchView.setOnQueryTextListener(this);
-
         // Create a new Adapter for the RecyclerView
 
-        mAdapter = new BuscarJugadoresAdapter(new ArrayList<>());
+        mAdapter = new BuscarJugadoresAdapter(new ArrayList<>(), this);
 
         AppExecutors.getInstance().networkIO().execute(new JugadoresNetworkLoaderRunnable(
                 (jugadores) -> mAdapter.swap(jugadores)));
@@ -54,18 +54,18 @@ public class BuscarJugadoresFragment extends Fragment implements SearchView.OnQu
     }
 
     @Override
-    public boolean onQueryTextSubmit(String query) {
-        return false;
+    public void onListInteraction(Jugador jugador) {
+
+        JugadorDetailFragment mFragment = JugadorDetailFragment.newInstance(jugador);
+        assert getFragmentManager() != null;
+        FragmentTransaction mTransaction = getFragmentManager().beginTransaction();
+
+        mTransaction.replace(R.id.favoritosContainer, mFragment)
+                .addToBackStack(null) // Add this transaction to the back stack so the user can navigate back
+                .commit();
+
     }
 
-    @Override
-    public boolean onQueryTextChange(String newText) {
-
-        mAdapter.filtradoJugadores(newText);
-
-        return false;
-
-    }
 
     @Override
     public void onDestroyView() {

@@ -13,10 +13,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:iconifiedByDefault="false"
-        app:queryHint=""/>
+        app:queryHint="@string/SearchTeam"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/sEquiposList"
+        android:id="@+id/buscarEquiposRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"

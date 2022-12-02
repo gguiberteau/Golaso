@@ -20,7 +20,6 @@ import es.unex.giiis.golaso.databinding.FragmentPartidosBinding;
 public class PartidosFragment extends Fragment {
 
     private FragmentPartidosBinding binding;
-    private BuscarEquiposAdapter mAdapter;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,

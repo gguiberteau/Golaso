@@ -1,5 +1,6 @@
 package es.unex.giiis.golaso.ui.elementos;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,6 +22,7 @@ import com.google.android.material.tabs.TabLayout;
 
 import es.unex.giiis.golaso.R;
 import es.unex.giiis.golaso.databinding.FragmentEquipoDetailBinding;
+import es.unex.giiis.golaso.model.Equipo;
 
 public class EquipoDetailFragment extends Fragment {
 
@@ -51,6 +54,24 @@ public class EquipoDetailFragment extends Fragment {
         args.putInt(ARG_PARAM6, id);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    public static EquipoDetailFragment newInstance(Equipo equipo) {
+
+        EquipoDetailFragment fragment = new EquipoDetailFragment();
+        Bundle args = new Bundle();
+
+        args.putString(ARG_PARAM1, equipo.getNombre());
+        args.putString(ARG_PARAM2, equipo.getUbicacion());
+        args.putString(ARG_PARAM3, equipo.getEstadio());
+        args.putString(ARG_PARAM4, equipo.getEntrenador());
+        args.putString(ARG_PARAM5, equipo.getLogo());
+        args.putInt(ARG_PARAM6, equipo.getIdEquipo());
+
+        fragment.setArguments(args);
+
+        return fragment;
+
     }
 
     @Override
@@ -132,6 +153,8 @@ public class EquipoDetailFragment extends Fragment {
         Glide.with(this)
                 .load(mLogo)
                 .into(iVlogoEquipo);
+
+        Button shareTeam;
 
         return root;
     }

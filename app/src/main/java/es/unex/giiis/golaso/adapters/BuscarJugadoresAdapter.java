@@ -1,10 +1,12 @@
 package es.unex.giiis.golaso.adapters;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -17,7 +19,14 @@ import es.unex.giiis.golaso.model.Jugador;
 public class BuscarJugadoresAdapter extends RecyclerView.Adapter<BuscarJugadoresAdapter.MyViewHolder> {
 
     private List<Jugador> mDataset;
-    private List<Jugador> mOriginalDataset;
+
+    public interface OnListInteractionListener{
+
+        void onListInteraction(Jugador jugador);      //Type of the element to be returned
+
+    }
+
+    public OnListInteractionListener mListener;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and you provide access to all
@@ -46,14 +55,14 @@ public class BuscarJugadoresAdapter extends RecyclerView.Adapter<BuscarJugadores
 
     // Provide a suitable constructor (depends on the kind of dataset)
 
-    public BuscarJugadoresAdapter(List<Jugador> myDataset) {
+    public BuscarJugadoresAdapter(List<Jugador> myDataset, OnListInteractionListener listener) {
 
         mDataset = myDataset;
-        mOriginalDataset = new ArrayList<>();
-        mOriginalDataset.addAll(myDataset);
+        mListener = listener;
 
     }
 
+    @NonNull
     @Override
     public BuscarJugadoresAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
                                                                 int viewType) {
@@ -78,6 +87,15 @@ public class BuscarJugadoresAdapter extends RecyclerView.Adapter<BuscarJugadores
         holder.mTextViewEquipo.setText(mDataset.get(position).getEquipo());
         holder.mTextViewPosicion.setText(mDataset.get(position).getPosicion());
 
+        holder.mView.setOnClickListener(v -> {
+
+            // Notify the active callbacks interface (the activity, if the fragment is attached
+            // to one) that an item has been selected.
+
+            mListener.onListInteraction(holder.mItem);
+
+        });
+
     }
 
     // Return the size of your dataset (invoked by the layout manager)
@@ -89,32 +107,10 @@ public class BuscarJugadoresAdapter extends RecyclerView.Adapter<BuscarJugadores
 
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void swap(List<Jugador> dataset){
 
         mDataset = dataset;
-        notifyDataSetChanged();
-
-    }
-
-    public void filtradoJugadores(String txtBuscar){
-
-        int longitud = txtBuscar.length();
-
-        if (longitud == 0) {
-
-            mDataset.clear();
-            mDataset.addAll(mOriginalDataset);
-
-        } else {
-
-            List<Jugador> filteredList = mDataset.stream().filter(jugador -> jugador.getNombre().
-                    toLowerCase().contains(txtBuscar.toLowerCase())).collect(Collectors.toList());
-
-            mDataset.clear();
-            mDataset.addAll(filteredList);
-
-        }
-
         notifyDataSetChanged();
 
     }

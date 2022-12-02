@@ -52,6 +52,23 @@ public class Jugador {
     @Expose
     private String posicion;
 
+    public Jugador(Integer mId, String mNombre, String mEquipo, String mPosicion, Integer mGoles,
+                   Integer mAsistencias, Integer mEdad, Integer mFechaNacimiento, Integer mPartidos,
+                   String mPais) {
+
+        this.idJugador = mId;
+        this.nombre = mNombre;
+        this.equipo = mEquipo;
+        this.posicion = mPosicion;
+        this.goles = mGoles;
+        this.asistencias = mAsistencias;
+        this.edad = mEdad;
+        this.añoNac = mFechaNacimiento;
+        this.partidosJugados = mPartidos;
+        this.pais = mPais;
+
+    }
+
     public Integer getAsistencias() {
         return asistencias;
     }

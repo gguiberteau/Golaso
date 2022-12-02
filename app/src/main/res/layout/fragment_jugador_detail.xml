@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    tools:context=".ui.elementos.JugadorDetailFragment">
+
+    <TextView
+        android:id="@+id/tvNombreJugador"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/tvNombreJugador"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="150dp"
+        tools:src="@drawable/ic_perfil" />
+
+    <View
+        android:id="@+id/dividerPersonal"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/imageView"
+        android:layout_marginTop="16dp"
+        android:background="?android:attr/listDivider" />
+
+    <TextView
+        android:id="@+id/tvDatosJugador"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dividerPersonal"
+        android:layout_marginTop="16dp"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/PlayerInfo"/>
+
+    <TextView
+        android:id="@+id/tvNombreEquipoJugadorLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDatosJugador"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/team" />
+
+    <TextView
+        android:id="@+id/textViewEquipoJugador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvNombreEquipoJugadorLabel"
+        android:layout_marginStart="3dp"
+        android:layout_toEndOf="@+id/tvNombreEquipoJugadorLabel"/>
+
+    <TextView
+        android:id="@+id/tVPosicionJugadorLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvNombreEquipoJugadorLabel"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/playerPos" />
+
+    <TextView
+        android:id="@+id/tvPosicionJugador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tVPosicionJugadorLabel"
+        android:layout_marginStart="3dp"
+        android:layout_toEndOf="@+id/tVPosicionJugadorLabel"/>
+
+    <TextView
+        android:id="@+id/tVGolesLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tVPosicionJugadorLabel"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/PlayerG" />
+
+    <TextView
+        android:id="@+id/tVGolesJugador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tVGolesLabel"
+        android:layout_marginStart="3dp"
+        android:layout_toEndOf="@+id/tVGolesLabel"/>
+
+    <TextView
+        android:id="@+id/tvAsistenciasJugadorLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tVGolesJugador"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/PlayerA" />
+
+    <TextView
+        android:id="@+id/tvAsistenciasJugador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvAsistenciasJugadorLabel"
+        android:layout_marginStart="3dp"
+        android:layout_toEndOf="@+id/tvAsistenciasJugadorLabel"/>
+
+    <TextView
+        android:id="@+id/tvEdadJugadorLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDatosJugador"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/PlayerAge" />
+
+    <TextView
+        android:id="@+id/tvEdadJugador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvEdadJugadorLabel"
+        android:layout_marginStart="3dp"
+        android:layout_toEndOf="@+id/tvEdadJugadorLabel"/>
+
+    <TextView
+        android:id="@+id/tvAnoNacJugadorLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvEdadJugadorLabel"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/PlayerYear" />
+
+    <TextView
+        android:id="@+id/tvAnoNacJugador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvAnoNacJugadorLabel"
+        android:layout_marginStart="3dp"
+        android:layout_toEndOf="@+id/tvAnoNacJugadorLabel"/>
+
+    <TextView
+        android:id="@+id/tvPJJugadorLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvAnoNacJugadorLabel"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/PlayerPJ" />
+
+    <TextView
+        android:id="@+id/tvPJJugador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvPJJugadorLabel"
+        android:layout_marginStart="3dp"
+        android:layout_toEndOf="@+id/tvPJJugadorLabel"/>
+
+    <TextView
+        android:id="@+id/tvPaisJugadorLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvPJJugadorLabel"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/PlayerCountry" />
+
+    <TextView
+        android:id="@+id/tvPaisJugador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvPaisJugadorLabel"
+        android:layout_marginStart="3dp"
+        android:layout_toEndOf="@+id/tvPaisJugadorLabel"/>
+
+    <Button
+        android:id="@+id/bSharePlayer"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/tvNombreJugador"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:drawableStart="@drawable/ic_share"/>
+
+
+</RelativeLayout>
