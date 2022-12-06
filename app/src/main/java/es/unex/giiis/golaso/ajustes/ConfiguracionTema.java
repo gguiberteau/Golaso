@@ -1,4 +1,4 @@
-package es.unex.giiis.golaso;
+package es.unex.giiis.golaso.ajustes;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -40,5 +40,4 @@ public final class ConfiguracionTema {
         String value = defaultSharedPreferences.getString(context.getString(R.string.settings_theme_key), Mode.DEFAULT.name());
         applyTheme(Mode.valueOf(value));
     }
-
 }

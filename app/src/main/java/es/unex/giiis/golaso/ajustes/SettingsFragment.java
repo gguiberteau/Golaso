@@ -1,4 +1,4 @@
-package es.unex.giiis.golaso;
+package es.unex.giiis.golaso.ajustes;
 
 import android.os.Bundle;
 
@@ -6,7 +6,7 @@ import androidx.preference.ListPreference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import es.unex.giiis.golaso.R;
-import es.unex.giiis.golaso.ConfiguracionTema;
+import es.unex.giiis.golaso.ajustes.ConfiguracionTema;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
 

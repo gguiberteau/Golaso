@@ -1,9 +1,11 @@
-package es.unex.giiis.golaso;
+package es.unex.giiis.golaso.ajustes;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import es.unex.giiis.golaso.R;
 
 public class AjustesActivity extends AppCompatActivity {
 
