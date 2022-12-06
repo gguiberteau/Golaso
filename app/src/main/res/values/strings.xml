@@ -49,5 +49,9 @@
     <string name="icon_login">Iniciar sesión</string>
     <string name="icon_modificar_perfil">Modificar Perfil</string>
     <string name="action_settings">Ajustes</string>
-
+    <string name="settings_theme_key" translatable="false">theme</string>
+    <string name="settings_fragment_tab" translatable="false">settings_fragment_tab</string>
+    <string name="settings_theme_title" translatable="false">Elegir tema</string>
+    <string name="settings_theme_dialog_title" translatable="false">Elegir tema</string>
+    <string name="settings_toolbar" translatable="false">Settings</string>
 </resources>
