@@ -4,10 +4,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Switch;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,11 +21,11 @@ import es.unex.giiis.golaso.R;
 import es.unex.giiis.golaso.adapters.JugadorEquipoAdapter;
 import es.unex.giiis.golaso.api.goleadores.JugadoresNetworkLoaderRunnable;
 import es.unex.giiis.golaso.databinding.FragmentJugadoresEquipoBinding;
+import es.unex.giiis.golaso.model.Jugador;
 
-public class JugadoresFragment_equipo extends Fragment {
+public class JugadoresFragment_equipo extends Fragment implements JugadorEquipoAdapter.ItemClickListener{
 
     private FragmentJugadoresEquipoBinding binding;
-    private RecyclerView recyclerView;
 
     private static final String ARG_PARAM1 = "idEquipo";
     private int mIdEquipo;
@@ -49,12 +52,14 @@ public class JugadoresFragment_equipo extends Fragment {
         binding = FragmentJugadoresEquipoBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        recyclerView = root.findViewById(R.id.recycler_view_jug);
+        RecyclerView recyclerView = root.findViewById(R.id.recycler_view_jug);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
-        JugadorEquipoAdapter adapter = new JugadorEquipoAdapter(this.getContext(), new ArrayList<>(), mIdEquipo);
+        SwitchCompat mSwitch = root.findViewById(R.id.switch1);
+
+        JugadorEquipoAdapter adapter = new JugadorEquipoAdapter(this.getContext(), new ArrayList<>(), mIdEquipo, mSwitch, this);
 
         AppExecutors.getInstance().networkIO().execute(new JugadoresNetworkLoaderRunnable(jugadores -> adapter.swap(jugadores)));
 
@@ -74,5 +79,18 @@ public class JugadoresFragment_equipo extends Fragment {
         super.onDestroyView();
         binding = null;
 
+    }
+
+    @Override
+    public void onItemClick(Jugador jugador) {
+        Fragment fragment = JugadorDetailFragment
+                .newInstance(jugador.getNombre(), jugador.getPais(), jugador.getPosicion(), jugador.getEquipo(), jugador.getFoto(),
+                        jugador.getIdJugador(), jugador.getGoles(), jugador.getAsistencias(), jugador.getPartidosJugados(),
+                        jugador.getAñoNac(), jugador.getEdad());
+
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frameContainer_clas, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 }
