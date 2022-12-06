@@ -1,52 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="Fuente">
-        <EditTextPreference
-            android:key="textSize"
-            android:title="Tamaño de fuente"
-            android:inputType="number"
-            android:dialogTitle="Escriba el tamaño de la fuente"
-            android:summary="Cambiar el tamaño de la fuente"
-            android:defaultValue="14"
-            android:selectAllOnFocus="true"
-            />
 
-        <CheckBoxPreference
-            android:key="boldStyle"
-            android:title="Negrita"
-            android:summary="Mostrar letras en negrita"
-            android:defaultValue="false"
-            />
+    <PreferenceCategory android:title="Sobre el teléfono">
+        <Preference
+            android:key="Versión_Android"
+            android:title="Versión de Android"
+            android:summary="V8.1 (Oreo)"/>
 
-        <CheckBoxPreference
-            android:key="italicStyle"
-            android:title="Cursiva"
-            android:summary="Mostrar letras en cursiva"
-            android:defaultValue="false"
-            />
-    </PreferenceCategory>
-
-    <PreferenceCategory android:title="Colores">
-        <ListPreference
-            android:key="textColor"
-            android:title="Color del texto"
-            android:entries="@array/colors_values"
-            android:entryValues="@array/colors_key"
-            android:defaultValue="black"
-            />
-        <ListPreference
-            android:key="backgroundColor"
-            android:title="Color del fondo"
-            android:entries="@array/colors_values"
-            android:entryValues="@array/colors_key"
-            android:defaultValue="background"
-            />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="Contáctanos">
         <Preference
             android:key="Gmail"
-            android:title="Correo electrónico">
+            android:title="Correo electrónico"
+            android:summary="Para cualquier duda: gpsaseeb03@gmail.com">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:data="https://www.google.com/intl/es/gmail/about/" />
@@ -67,7 +34,17 @@
                 android:action="android.intent.action.VIEW"
                 android:data="tel:619262655" />
         </Preference>
+    </PreferenceCategory>
 
+    <PreferenceCategory android:title="Elegir modo día/modo nocturno">
+        <ListPreference
+            android:key="@string/settings_theme_key"
+            android:title="@string/settings_theme_title"
+            android:icon="@drawable/baseline_settings_brightness_24"
+            android:dialogTitle="@string/settings_theme_dialog_title"
+            android:entries="@array/settings_theme_entries"
+            android:entryValues="@array/settings_theme_values"
+            android:summary="%s"/>
     </PreferenceCategory>
 
 </PreferenceScreen>
