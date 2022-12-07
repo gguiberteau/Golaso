@@ -1,5 +1,6 @@
 package es.unex.giiis.golaso.ui.perfil;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,15 +20,12 @@ public class PerfilFragment extends Fragment {
     private Button buttonLogout;
     private TextView user_email;
     private FragmentPerfilBinding binding;
-
+    private SharedPreferences sharedPref;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getParentFragmentManager().setFragmentResultListener("requestKey", this, (requestKey, result) -> {
-            String email = result.getString("email");
-            user_email.setText(email);
-        });
+
     }
 
     @Override
@@ -36,8 +34,10 @@ public class PerfilFragment extends Fragment {
 
         binding = FragmentPerfilBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        sharedPref = getActivity().getPreferences(getContext().MODE_PRIVATE);
 
         user_email = root.findViewById(R.id.user_email);
+        user_email.setText(sharedPref.getString(getString(R.string.edit_user), "No user"));
 
         buttonLogout = (Button) root.findViewById(R.id.buttonLogout);
         buttonEdit = (Button) root.findViewById(R.id.buttonEdit);

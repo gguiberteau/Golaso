@@ -7,7 +7,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
+import es.unex.giiis.golaso.R;
 import es.unex.giiis.golaso.databinding.FragmentFavoritosMisFavsBinding;
 
 public class FavoritosFragmentMisFavs extends Fragment {
@@ -21,8 +23,7 @@ public class FavoritosFragmentMisFavs extends Fragment {
         binding = FragmentFavoritosMisFavsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textMisFavs;
-        textView.setText("Este es el FavoritosFragmentMisFavs");
+
 
         return root;
 

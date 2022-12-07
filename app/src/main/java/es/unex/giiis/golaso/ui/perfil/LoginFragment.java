@@ -1,5 +1,7 @@
 package es.unex.giiis.golaso.ui.perfil;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,11 +37,11 @@ public class LoginFragment extends Fragment {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Bundle bundle = new Bundle();
-                bundle.putString("email", edit_user.getText().toString());
-                bundle.putString("password", edit_password.getText().toString());
-                getParentFragmentManager().setFragmentResult("requestKey", bundle);
+                SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString(getString(R.string.edit_user), edit_user.getText().toString());
+                editor.putString(getString(R.string.edit_password), edit_password.getText().toString());
+                editor.apply();
                 Navigation.findNavController(root).navigate(R.id.action_nav_login_to_nav_profile);
             }
         });
