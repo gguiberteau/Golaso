@@ -10,8 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -65,7 +63,8 @@ public class BuscarJugadoresAdapter extends RecyclerView.Adapter<BuscarJugadores
 
         this.mDataset = myDataset;
         this.mListener = listener;
-        this.mOriginalDataset = myDataset;
+        this.mOriginalDataset = new ArrayList<>();
+        this.mOriginalDataset.addAll(myDataset);
 
     }
 
@@ -109,15 +108,13 @@ public class BuscarJugadoresAdapter extends RecyclerView.Adapter<BuscarJugadores
 
     @Override
     public int getItemCount() {
-
         return mDataset.size();
-
     }
 
     @SuppressLint("NotifyDataSetChanged")
     public void swap(List<Jugador> dataset){
 
-        mDataset = dataset;
+        mOriginalDataset = dataset;
         notifyDataSetChanged();
 
     }
@@ -129,7 +126,6 @@ public class BuscarJugadoresAdapter extends RecyclerView.Adapter<BuscarJugadores
         if(text.length() == 0){
 
             mDataset.clear();
-            mDataset.addAll(mOriginalDataset);
 
         } else{
 
@@ -143,7 +139,6 @@ public class BuscarJugadoresAdapter extends RecyclerView.Adapter<BuscarJugadores
 
         }
 
-        swap(mOriginalDataset);
         notifyDataSetChanged();
 
     }
