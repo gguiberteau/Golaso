@@ -31,9 +31,8 @@ public class PartidoHomeAdapter extends RecyclerView.Adapter<PartidoHomeAdapter.
     List<Equipo> equipos;
     public List<Partido> partidosDia;
     String fecha;
-    TextView textView;
 
-    public PartidoHomeAdapter(Context context, List<Partido> partidosList, List<Equipo> equiposList, TextView text) {
+    public PartidoHomeAdapter(Context context, List<Partido> partidosList, List<Equipo> equiposList) {
         this.context = context;
         this.partidos = partidosList;
         this.equipos = equiposList;
@@ -41,7 +40,6 @@ public class PartidoHomeAdapter extends RecyclerView.Adapter<PartidoHomeAdapter.
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         Date date = new Date();
         this.fecha = dateFormat.format(date);
-        this.textView = text;
     }
 
     @NonNull
@@ -55,9 +53,6 @@ public class PartidoHomeAdapter extends RecyclerView.Adapter<PartidoHomeAdapter.
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         if (!partidosDia.isEmpty()) {
-
-            textView.setText("No hay partidos en la fecha seleccionada");
-
             Partido partido = partidosDia.get(position);
 
             Equipo local = buscarEquipoPorId(partido.getId_local());
@@ -125,10 +120,6 @@ public class PartidoHomeAdapter extends RecyclerView.Adapter<PartidoHomeAdapter.
                 holder.tVHora.setText("Hora por determinar");
 
         }
-        else {
-            textView.setText("No hay partidos en la fecha seleccionada");
-        }
-
     }
 
     public void setFecha(String fecha) {

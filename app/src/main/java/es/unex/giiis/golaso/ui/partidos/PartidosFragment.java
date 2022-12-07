@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -38,7 +39,8 @@ public class PartidosFragment extends Fragment {
     DatePickerDialog picker;
     RecyclerView recyclerView;
     RecyclerView.LayoutManager RecyclerViewLayoutManager;
-    TextView text;
+    TextView textEmpty;
+    ImageView imageViewEmpty;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -52,9 +54,10 @@ public class PartidosFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(RecyclerViewLayoutManager);
 
-        this.text = root.findViewById(R.id.tVVacio);
+        this.textEmpty = root.findViewById(R.id.tVVacio);
+        this.imageViewEmpty = root.findViewById(R.id.iVSadBall);
 
-        PartidoHomeAdapter adapter = new PartidoHomeAdapter(this.getActivity(), new ArrayList<>(), new ArrayList<>(), this.text);
+        PartidoHomeAdapter adapter = new PartidoHomeAdapter(this.getActivity(), new ArrayList<>(), new ArrayList<>());
 
         AppExecutors.getInstance().networkIO().execute(new PartidosNetworkLoaderRunnable(partidos -> adapter.swapP(partidos)));
         AppExecutors.getInstance().networkIO().execute(new EquiposNetworkLoaderRunnable(equipos -> adapter.swapE(equipos)));
@@ -77,6 +80,21 @@ public class PartidosFragment extends Fragment {
             picker = new DatePickerDialog(this.getActivity(), (view, year1, monthOfYear, dayOfMonth) -> {
                 eText.setText(twoDigits(dayOfMonth) + "/" + twoDigits(monthOfYear+1) + "/" + year1);
                 adapter.setFecha(eText.getText().toString());
+
+                if(adapter.getItemCount() > 0) {
+                    textEmpty.setVisibility(View.INVISIBLE);
+                    imageViewEmpty.setVisibility(View.INVISIBLE);
+                    recyclerView.setVisibility(View.VISIBLE);
+                }
+
+                else {
+                    imageViewEmpty.setVisibility(View.VISIBLE);
+                    textEmpty.setVisibility(View.VISIBLE);
+                    recyclerView.setVisibility(View.INVISIBLE);
+                }
+                adapter.notifyDataSetChanged();
+
+
             }, year, month, day);
             picker.show();
         });
