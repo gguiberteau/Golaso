@@ -6,16 +6,25 @@
     android:orientation="vertical"
     android:background="@color/background"
     tools:context=".ui.partidos.PartidosFragment"
-    android:gravity="center_horizontal"
-    android:layout_marginTop="10dp">
+    android:gravity="center_horizontal">
 
-    <EditText
-        android:id="@+id/datePicker"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Date"
-        android:gravity="center"/>
+        android:gravity="center_horizontal"
+        android:background="@color/statusBar">
 
+        <EditText
+            android:id="@+id/datePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:hint=" Elige una fecha "
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:gravity="center"
+            android:focusable="true"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,10 +51,9 @@
     <TextView
         android:id="@+id/tVVacio"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_marginTop="20dp"
-        android:text="dtheth"
         android:textSize="16sp"
-    />
+        android:gravity="center" />
 
 </LinearLayout>

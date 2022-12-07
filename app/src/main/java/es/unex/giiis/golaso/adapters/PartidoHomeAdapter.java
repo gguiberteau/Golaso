@@ -54,7 +54,9 @@ public class PartidoHomeAdapter extends RecyclerView.Adapter<PartidoHomeAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        if (partidosDia.size() > 0) {
+        if (!partidosDia.isEmpty()) {
+
+            textView.setText("No hay partidos en la fecha seleccionada");
 
             Partido partido = partidosDia.get(position);
 
@@ -117,8 +119,13 @@ public class PartidoHomeAdapter extends RecyclerView.Adapter<PartidoHomeAdapter.
             else
                 holder.tVHora.setText("Hora por determinar");
 
+            if (partido.getFecha() != null)
+                holder.tVFecha.setText(partido.getFecha());
+            else
+                holder.tVHora.setText("Hora por determinar");
+
         }
-        else{
+        else {
             textView.setText("No hay partidos en la fecha seleccionada");
         }
 

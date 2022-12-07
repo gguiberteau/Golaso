@@ -64,14 +64,19 @@ public class ResultadoEquipoAdapter extends RecyclerView.Adapter<ResultadoEquipo
             holder.tVNombreLocal.setText(partido.getLocal());
             holder.tVNombreVis.setText(partido.getVisitante());
 
-            Glide.with(context)
-                    .load(local.getLogo())
-                    .override(120, 120)
-                    .into(holder.iVEquipoLocal);
-            Glide.with(context)
-                    .load(Uri.parse(visitante.getLogo()))
-                    .override(120, 120)
-                    .into(holder.iVEquipoVis);
+            if (local.getLogo() != null) {
+                Glide.with(context)
+                        .load(local.getLogo())
+                        .override(120, 120)
+                        .into(holder.iVEquipoLocal);
+            }
+
+            if (visitante.getLogo() != null) {
+                Glide.with(context)
+                        .load(Uri.parse(visitante.getLogo()))
+                        .override(120, 120)
+                        .into(holder.iVEquipoVis);
+            }
 
             if (partido.getMarcador() != null) {
                 String marcador = String.valueOf(partido.getMarcador());

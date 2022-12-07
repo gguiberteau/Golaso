@@ -38,6 +38,7 @@ public class PartidosFragment extends Fragment {
     DatePickerDialog picker;
     RecyclerView recyclerView;
     RecyclerView.LayoutManager RecyclerViewLayoutManager;
+    TextView text;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -50,8 +51,10 @@ public class PartidosFragment extends Fragment {
         recyclerView = root.findViewById(R.id.rVPartidosHome);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(RecyclerViewLayoutManager);
-        TextView text = root.findViewById(R.id.tVVacio);
-        PartidoHomeAdapter adapter = new PartidoHomeAdapter(this.getActivity(), new ArrayList<>(), new ArrayList<>(), text);
+
+        this.text = root.findViewById(R.id.tVVacio);
+
+        PartidoHomeAdapter adapter = new PartidoHomeAdapter(this.getActivity(), new ArrayList<>(), new ArrayList<>(), this.text);
 
         AppExecutors.getInstance().networkIO().execute(new PartidosNetworkLoaderRunnable(partidos -> adapter.swapP(partidos)));
         AppExecutors.getInstance().networkIO().execute(new EquiposNetworkLoaderRunnable(equipos -> adapter.swapE(equipos)));
