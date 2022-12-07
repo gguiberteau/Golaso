@@ -68,6 +68,18 @@ public class Equipo {
     @Expose
     private String logo;
 
+    public Equipo(Integer mId, String mNombre, String mEntrenador, String mEstadio,
+                  String mUbicacion, String mLogo) {
+
+        this.idEquipo = mId;
+        this.nombre = mNombre;
+        this.entrenador = mEntrenador;
+        this.estadio = mEstadio;
+        this.ubicacion = mUbicacion;
+        this.logo = mLogo;
+
+    }
+
     public String getLogo() { return logo;}
 
     public void setLogo(String logo) { this.logo = logo; }
@@ -183,5 +195,6 @@ public class Equipo {
     public void setIdEquipo(Integer idEquipo) {
         this.idEquipo = idEquipo;
     }
+
 
 }

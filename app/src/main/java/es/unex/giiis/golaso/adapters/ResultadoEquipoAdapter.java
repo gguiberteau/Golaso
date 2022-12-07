@@ -12,6 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,11 +64,11 @@ public class ResultadoEquipoAdapter extends RecyclerView.Adapter<ResultadoEquipo
             holder.tVNombreLocal.setText(partido.getLocal());
             holder.tVNombreVis.setText(partido.getVisitante());
 
-            GlideApp.with(context)
+            Glide.with(context)
                     .load(local.getLogo())
                     .override(120, 120)
                     .into(holder.iVEquipoLocal);
-            GlideApp.with(context)
+            Glide.with(context)
                     .load(Uri.parse(visitante.getLogo()))
                     .override(120, 120)
                     .into(holder.iVEquipoVis);
@@ -108,8 +110,10 @@ public class ResultadoEquipoAdapter extends RecyclerView.Adapter<ResultadoEquipo
                 holder.tVNombreLocal.setTextColor(Color.parseColor("#ffffff"));
             }
 
-            if (partido.getHora() != null)
-                holder.tVHora.setText(partido.getHora());
+            if (partido.getHora() != null) {
+                String hora = partido.getHora().substring(0, 5);
+                holder.tVHora.setText(hora);
+            }
             else
                 holder.tVHora.setText("Hora por determinar");
 

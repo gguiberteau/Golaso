@@ -1,4 +1,4 @@
-package es.unex.giiis.golaso.ui.favoritos;
+package es.unex.giiis.golaso.ui.buscar;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,7 +22,7 @@ import es.unex.giiis.golaso.model.Equipo;
 import es.unex.giiis.golaso.ui.elementos.EquipoDetailFragment;
 
 
-public class BuscarEquiposFragment extends Fragment implements BuscarEquiposAdapter.OnListInteractionListener {
+public class BuscarEquiposFragment extends Fragment{
 
     private FragmentBuscarEquiposBinding binding;
     private BuscarEquiposAdapter mAdapter;
@@ -41,7 +41,15 @@ public class BuscarEquiposFragment extends Fragment implements BuscarEquiposAdap
 
         // Create a new Adapter for the RecyclerView
 
-        mAdapter = new BuscarEquiposAdapter(new ArrayList<>(), this);
+        mAdapter = new BuscarEquiposAdapter(new ArrayList<>(), team -> {
+
+            EquipoDetailFragment equipoDetail = EquipoDetailFragment.newInstance(team);
+            FragmentTransaction transaction = requireActivity().getSupportFragmentManager()
+                    .beginTransaction();
+            transaction.replace(R.id.fragment_search, equipoDetail)
+                    .addToBackStack(null)
+                    .commit();
+        });
 
         AppExecutors.getInstance().networkIO().execute(new EquiposNetworkLoaderRunnable(
                 (equipos) -> mAdapter.swap(equipos)));
@@ -49,19 +57,6 @@ public class BuscarEquiposFragment extends Fragment implements BuscarEquiposAdap
         mRecyclerView.setAdapter(mAdapter);
 
         return root;
-
-    }
-
-    @Override
-    public void onListInteraction(Equipo equipo) {
-
-        EquipoDetailFragment mFragment = EquipoDetailFragment.newInstance(equipo);
-        assert getFragmentManager() != null;
-        FragmentTransaction mTransaction = getFragmentManager().beginTransaction();
-
-        mTransaction.replace(R.id.favoritosContainer, mFragment)
-                .addToBackStack(null) // Add this transaction to the back stack so the user can navigate back
-                .commit();
 
     }
 

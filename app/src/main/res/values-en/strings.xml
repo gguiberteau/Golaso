@@ -5,6 +5,7 @@
     <string name="icon_clasificacion">Table</string>
     <string name="icon_perfil">Profile</string>
     <string name="icon_partidos">Matches</string>
+    <string name="icon_buscar">Search</string>
     <string name="title_search">Search</string>
     <string name="title_fav">Favourites</string>
     <string name="title_profile">Profile</string>
@@ -17,7 +18,7 @@
     <string name="rank">Rank:</string>
     <string name="team">Team:</string>
     <string name="stadium">Stadium:</string>
-    <string name="accesPos">" Access position:"</string>
+    <string name="accesPos">"Position:"</string>
     <string name="team_details">Team details</string>
     <string name="statistics">Team stats</string>
     <string name="gc">Goals against:</string>
@@ -47,4 +48,5 @@
     <string name="PlayerYear">Birth year:</string>
     <string name="PlayerPJ">Games played:</string>
     <string name="PlayerCountry">Country:</string>
+    <string name="ShareTeam">Share team</string>
 </resources>

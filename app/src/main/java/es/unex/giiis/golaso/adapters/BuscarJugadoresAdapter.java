@@ -4,10 +4,13 @@ import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,14 +22,15 @@ import es.unex.giiis.golaso.model.Jugador;
 public class BuscarJugadoresAdapter extends RecyclerView.Adapter<BuscarJugadoresAdapter.MyViewHolder> {
 
     private List<Jugador> mDataset;
+    private List<Jugador> mOriginalDataset;
 
-    public interface OnListInteractionListener{
+    public interface OnPlayerClickListener{
 
-        void onListInteraction(Jugador jugador);      //Type of the element to be returned
+        void onPlayerClick(Jugador jugador);      //Type of the element to be returned
 
     }
 
-    public OnListInteractionListener mListener;
+    public OnPlayerClickListener mListener;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and you provide access to all
@@ -37,6 +41,8 @@ public class BuscarJugadoresAdapter extends RecyclerView.Adapter<BuscarJugadores
         public TextView mTextViewNombre;
         public TextView mTextViewEquipo;
         public TextView mTextViewPosicion;
+
+
         public View mView;
         public Jugador mItem;
 
@@ -55,10 +61,11 @@ public class BuscarJugadoresAdapter extends RecyclerView.Adapter<BuscarJugadores
 
     // Provide a suitable constructor (depends on the kind of dataset)
 
-    public BuscarJugadoresAdapter(List<Jugador> myDataset, OnListInteractionListener listener) {
+    public BuscarJugadoresAdapter(List<Jugador> myDataset, OnPlayerClickListener listener) {
 
-        mDataset = myDataset;
-        mListener = listener;
+        this.mDataset = myDataset;
+        this.mListener = listener;
+        this.mOriginalDataset = myDataset;
 
     }
 
@@ -73,7 +80,7 @@ public class BuscarJugadoresAdapter extends RecyclerView.Adapter<BuscarJugadores
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_jugador, parent, false);
 
-        return new BuscarJugadoresAdapter.MyViewHolder(v);
+        return new MyViewHolder(v);
 
     }
 
@@ -92,7 +99,7 @@ public class BuscarJugadoresAdapter extends RecyclerView.Adapter<BuscarJugadores
             // Notify the active callbacks interface (the activity, if the fragment is attached
             // to one) that an item has been selected.
 
-            mListener.onListInteraction(holder.mItem);
+            mListener.onPlayerClick(holder.mItem);
 
         });
 
@@ -111,6 +118,32 @@ public class BuscarJugadoresAdapter extends RecyclerView.Adapter<BuscarJugadores
     public void swap(List<Jugador> dataset){
 
         mDataset = dataset;
+        notifyDataSetChanged();
+
+    }
+
+    //Filtrado de la lista de jugadores
+
+    public void filter(String text){
+
+        if(text.length() == 0){
+
+            mDataset.clear();
+            mDataset.addAll(mOriginalDataset);
+
+        } else{
+
+            mDataset.clear();
+
+            List<Jugador> filteredList = mOriginalDataset.stream()
+                    .filter(jugador -> jugador.getNombre().toLowerCase().contains(text.toLowerCase()))
+                    .collect(Collectors.toList());
+
+            mDataset.addAll(filteredList);
+
+        }
+
+        swap(mOriginalDataset);
         notifyDataSetChanged();
 
     }

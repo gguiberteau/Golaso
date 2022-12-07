@@ -6,9 +6,10 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 import es.unex.giiis.golaso.R;
@@ -43,17 +45,25 @@ public class EquipoDetailFragment extends Fragment {
     private String mLogo;
     private int mId;
 
-    public static EquipoDetailFragment newInstance(String nombre, String ubicacion, String estadio, String entrenador, String logo, int id) {
+    private Equipo mEquipo;
+
+    public static EquipoDetailFragment newInstance(String nombre, String ubicacion, String estadio,
+                                                   String entrenador, String logo, int id) {
+
         EquipoDetailFragment fragment = new EquipoDetailFragment();
         Bundle args = new Bundle();
+
         args.putString(ARG_PARAM1, nombre);
         args.putString(ARG_PARAM2, ubicacion);
         args.putString(ARG_PARAM3, estadio);
         args.putString(ARG_PARAM4, entrenador);
         args.putString(ARG_PARAM5, logo);
         args.putInt(ARG_PARAM6, id);
+
         fragment.setArguments(args);
+
         return fragment;
+
     }
 
     public static EquipoDetailFragment newInstance(Equipo equipo) {
@@ -76,14 +86,20 @@ public class EquipoDetailFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
+
             mNombre = getArguments().getString(ARG_PARAM1);
             mUbicacion = getArguments().getString(ARG_PARAM2);
             mEstadio = getArguments().getString(ARG_PARAM3);
             mEntrenador = getArguments().getString(ARG_PARAM4);
             mLogo = getArguments().getString(ARG_PARAM5);
             mId = getArguments().getInt(ARG_PARAM6);
+
+            mEquipo = new Equipo(mId, mNombre, mEntrenador, mEstadio, mUbicacion, mLogo);
+
         }
     }
 
@@ -154,23 +170,24 @@ public class EquipoDetailFragment extends Fragment {
                 .load(mLogo)
                 .into(iVlogoEquipo);
 
-        Button shareTeam;
+        FloatingActionButton shareTeam = root.findViewById(R.id.shareTeam);
+        shareTeam.setOnClickListener(v -> {
+
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            String text="";
+
+            text = mEquipo.getNombre() + "\n Entrenador: " + mEquipo.getEntrenador() +
+                    "\n Estadio: " + mEquipo.getEstadio() + "\n Ubicación: " +
+                    mEquipo.getUbicacion() +
+                    "\n Compartido desde GOLASO, tu app de fútbol favorita!";
+
+            intent.putExtra(Intent.EXTRA_TEXT,text);
+            startActivity(intent);
+
+        });
 
         return root;
-    }
-
-    public void redondearImagen(ImageView iv, int dw) {
-        Drawable originalDrawable = getResources().getDrawable(dw, null);
-        Bitmap originalBitmap = ((BitmapDrawable) originalDrawable).getBitmap();
-
-        //creamos el drawable redondeado
-        RoundedBitmapDrawable roundedDrawable =
-                RoundedBitmapDrawableFactory.create(getResources(), originalBitmap);
-
-        //asignamos el CornerRadius
-        roundedDrawable.setCornerRadius(200);
-
-        iv.setImageDrawable(roundedDrawable);
     }
 
     @Override

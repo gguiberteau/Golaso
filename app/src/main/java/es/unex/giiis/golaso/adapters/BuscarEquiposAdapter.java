@@ -21,13 +21,13 @@ public class BuscarEquiposAdapter extends RecyclerView.Adapter<BuscarEquiposAdap
 
     private List<Equipo> mDataset;
 
-    public interface OnListInteractionListener{
+    public interface OnTeamClickListener{
 
-        void onListInteraction(Equipo equipo);      //Type of the element to be returned
+        void onTeamClick(Equipo equipo);      //Type of the element to be returned
 
     }
 
-    public OnListInteractionListener mListener;
+    public BuscarEquiposAdapter.OnTeamClickListener mListener;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and you provide access to all
@@ -39,6 +39,7 @@ public class BuscarEquiposAdapter extends RecyclerView.Adapter<BuscarEquiposAdap
         public TextView mTextViewEntrenador;
         public TextView mTextViewPosicion;
         public ImageView mImageView;
+
         public View mView;
         public Equipo mItem;
 
@@ -58,10 +59,10 @@ public class BuscarEquiposAdapter extends RecyclerView.Adapter<BuscarEquiposAdap
 
     // Provide a suitable constructor (depends on the kind of dataset)
 
-    public BuscarEquiposAdapter(List<Equipo> myDataset, OnListInteractionListener listener) {
+    public BuscarEquiposAdapter(List<Equipo> myDataset, OnTeamClickListener listener) {
 
-        mDataset = myDataset;
-        mListener = listener;
+        this.mDataset = myDataset;
+        this.mListener = listener;
 
     }
 
@@ -101,7 +102,7 @@ public class BuscarEquiposAdapter extends RecyclerView.Adapter<BuscarEquiposAdap
             // Notify the active callbacks interface (the activity, if the fragment is attached
             // to one) that an item has been selected.
 
-            mListener.onListInteraction(holder.mItem);
+            mListener.onTeamClick(holder.mItem);
 
         });
 

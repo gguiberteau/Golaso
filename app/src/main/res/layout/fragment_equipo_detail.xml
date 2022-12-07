@@ -13,7 +13,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="130dp"
         app:cardBackgroundColor="#0A0E29">
 
         <LinearLayout
@@ -69,6 +69,17 @@
                     android:textSize="16sp" />
 
             </LinearLayout>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/shareTeam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:clickable="true"
+                android:src="@drawable/ic_share"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </LinearLayout>
 
