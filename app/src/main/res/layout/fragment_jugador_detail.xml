@@ -6,170 +6,176 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:id="@+id/jugadorLayout"
-    android:gravity="center_horizontal"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/ic_player_card"
     tools:context=".ui.elementos.JugadorDetailFragment"
     app:layout_constraintBottom_toTopOf="@+id/nav_view">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+    <ImageView
+        android:id="@+id/caraJugDetail"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:elevation="5dp"
+        android:theme="@style/Theme.AppCompat.Light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.500"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.485" />
+
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/caraJugDetail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:background="@color/black"/>
+
+    <TextView
+        android:id="@+id/tVNombreJugDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_corner"
+        android:elevation="5dp"
+        android:fontFamily="sans-serif-thin"
+        android:text="BENZEMA"
+        android:padding="10dp"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.258" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.265"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.734">
 
         <TextView
-            android:id="@+id/tVNombreJugDetail"
+            android:id="@+id/tVEdadJugDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="10dp"
             android:elevation="5dp"
-            android:layout_marginTop="40dp"
             android:fontFamily="sans-serif-black"
             android:textAllCaps="true"
             android:textColor="@color/black"
-            android:textSize="22sp"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:typeface="normal" />
+
+        <TextView
+            android:id="@+id/tVSiglaPais"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="10dp"
+            android:elevation="5dp"
+            android:fontFamily="sans-serif-black"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="13sp"
             android:textStyle="bold"
             android:typeface="normal" />
 
         <ImageView
-            android:id="@+id/caraJugDetail"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:layout_marginBottom="20dp"
+            android:id="@+id/iVBandera"
+            android:layout_width="35dp"
+            android:layout_height="20dp"
             android:elevation="5dp"
             android:theme="@style/Theme.AppCompat.Light" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="65dp"
-                android:layout_marginEnd="20dp"
-                android:gravity="end"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tVEdadJugDetail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginBottom="10dp"
-                    android:elevation="5dp"
-                    android:fontFamily="sans-serif-black"
-                    android:textAllCaps="true"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:typeface="normal" />
-
-                <TextView
-                    android:id="@+id/tVSiglaPais"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginBottom="10dp"
-                    android:elevation="5dp"
-                    android:fontFamily="sans-serif-black"
-                    android:textAllCaps="true"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:typeface="normal" />
-
-                <ImageView
-                    android:id="@+id/iVBandera"
-                    android:layout_width="35dp"
-                    android:layout_height="20dp"
-                    android:elevation="5dp"
-                    android:theme="@style/Theme.AppCompat.Light" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tVPJJugDetail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:elevation="5dp"
-                    android:fontFamily="sans-serif-black"
-                    android:textAllCaps="true"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:typeface="normal" />
-
-                <TextView
-                    android:id="@+id/tVGolesJugDet"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:elevation="5dp"
-                    android:fontFamily="sans-serif-black"
-                    android:textAllCaps="true"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:typeface="normal" />
-
-                <TextView
-                    android:id="@+id/tVAsJugDet"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:elevation="5dp"
-                    android:fontFamily="sans-serif-black"
-                    android:textAllCaps="true"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:typeface="normal" />
-
-            </LinearLayout>
-
-        </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal"
+        android:gravity="start"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="0.742"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.733">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/sharePlayer"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/tVPJJugDetail"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="150dp"
-            android:clickable="true"
-            android:src="@drawable/ic_share" />
+            android:layout_marginBottom="10dp"
+            android:elevation="5dp"
+            android:fontFamily="sans-serif-black"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:typeface="normal" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/favPlayer"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/tVGolesJugDet"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:src="@drawable/ic_favoritos" />
+            android:layout_marginBottom="10dp"
+            android:elevation="5dp"
+            android:fontFamily="sans-serif-black"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:typeface="normal" />
+
+        <TextView
+            android:id="@+id/tVAsJugDet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="5dp"
+            android:fontFamily="sans-serif-black"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:typeface="normal" />
 
     </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/sharePlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:clickable="true"
+        android:src="@drawable/ic_share"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/favPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:clickable="true"
+        android:src="@drawable/ic_favoritos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
