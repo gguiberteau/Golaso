@@ -25,6 +25,12 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <activity
+            android:name=".ui.ajustes.AjustesActivity"
+            android:exported="true"
+            android:label="@string/action_settings" />
+
     </application>
 
 </manifest>

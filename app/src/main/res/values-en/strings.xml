@@ -49,4 +49,10 @@
     <string name="PlayerPJ">Games played:</string>
     <string name="PlayerCountry">Country:</string>
     <string name="ShareTeam">Share team</string>
+    <string name="action_settings" >Settings</string>
+    <string name="settings_theme_key" >Theme</string>
+    <string name="settings_fragment_tab" >settings_fragment_tab</string>
+    <string name="settings_theme_title" >Choose theme</string>
+    <string name="settings_theme_dialog_title" >Choose theme</string>
+    <string name="settings_toolbar" >Settings</string>
 </resources>
