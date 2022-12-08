@@ -1,5 +1,7 @@
 package es.unex.giiis.golaso.adapters;
 
+import static java.lang.String.valueOf;
+
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +20,6 @@ import java.util.stream.Collectors;
 
 import es.unex.giiis.golaso.R;
 import es.unex.giiis.golaso.model.Equipo;
-import es.unex.giiis.golaso.model.Jugador;
 
 public class BuscarEquiposAdapter extends RecyclerView.Adapter<BuscarEquiposAdapter.MyViewHolder>{
 
@@ -95,7 +96,7 @@ public class BuscarEquiposAdapter extends RecyclerView.Adapter<BuscarEquiposAdap
         holder.mItem = mDataset.get(position);
         holder.mTextViewNombre.setText(mDataset.get(position).getNombre());
         holder.mTextViewEntrenador.setText(mDataset.get(position).getEntrenador());
-        holder.mTextViewPosicion.setText((int) mDataset.get(position).getPosicion());
+        holder.mTextViewPosicion.setText(valueOf(mDataset.get(position).getPosicion()));
 
         Picasso.get().load(mDataset.get(position).getLogo()).
                 resize(250, 250).
