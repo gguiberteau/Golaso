@@ -6,147 +6,170 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:id="@+id/jugadorLayout"
+    android:gravity="center_horizontal"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/ic_player_card"
     tools:context=".ui.elementos.JugadorDetailFragment"
     app:layout_constraintBottom_toTopOf="@+id/nav_view">
 
-    <ImageView
-        android:id="@+id/caraJugDetail"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:layout_marginBottom="228dp"
-        android:theme="@style/Theme.AppCompat.Light"
-        android:elevation="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/tVNombreJugDetail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="396dp"
-        android:background="@drawable/round_corner"
-        android:elevation="5dp"
-        android:fontFamily="sans-serif-black"
-        android:padding="10dp"
-        android:text="NOMBRE"
-        android:textAllCaps="true"
-        android:textColor="#FFFFFF"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:typeface="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="132dp"
-        android:gravity="end"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.266"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/tVEdadJugDetail"
+            android:id="@+id/tVNombreJugDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:elevation="5dp"
+            android:layout_marginTop="40dp"
             android:fontFamily="sans-serif-black"
-            android:text="EDAD"
-            android:layout_marginEnd="5dp"
             android:textAllCaps="true"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:typeface="normal" />
-
-        <TextView
-            android:id="@+id/tVSiglaPais"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginEnd="5dp"
-            android:elevation="5dp"
-            android:fontFamily="sans-serif-black"
-            android:text="SIG"
-            android:textAllCaps="true"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:textSize="22sp"
             android:textStyle="bold"
             android:typeface="normal" />
 
         <ImageView
-            android:id="@+id/iVBandera"
-            android:layout_width="35dp"
-            android:layout_height="20dp"
+            android:id="@+id/caraJugDetail"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginBottom="20dp"
             android:elevation="5dp"
             android:theme="@style/Theme.AppCompat.Light" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="65dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="end"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tVEdadJugDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:elevation="5dp"
+                    android:fontFamily="sans-serif-black"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:typeface="normal" />
+
+                <TextView
+                    android:id="@+id/tVSiglaPais"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:elevation="5dp"
+                    android:fontFamily="sans-serif-black"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:typeface="normal" />
+
+                <ImageView
+                    android:id="@+id/iVBandera"
+                    android:layout_width="35dp"
+                    android:layout_height="20dp"
+                    android:elevation="5dp"
+                    android:theme="@style/Theme.AppCompat.Light" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tVPJJugDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:elevation="5dp"
+                    android:fontFamily="sans-serif-black"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:typeface="normal" />
+
+                <TextView
+                    android:id="@+id/tVGolesJugDet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:elevation="5dp"
+                    android:fontFamily="sans-serif-black"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:typeface="normal" />
+
+                <TextView
+                    android:id="@+id/tVAsJugDet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:elevation="5dp"
+                    android:fontFamily="sans-serif-black"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:typeface="normal" />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="132dp"
-        android:gravity="start"
-        android:orientation="vertical"
+        android:layout_marginBottom="20dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.746"
         app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
-            android:id="@+id/tVPJJugDetail"
-            android:layout_width="wrap_content"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/sharePlayer"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:elevation="5dp"
-            android:fontFamily="sans-serif-black"
-            android:text="PJ"
-            android:textAllCaps="true"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:typeface="normal" />
+            android:layout_marginEnd="150dp"
+            android:clickable="true"
+            android:src="@drawable/ic_share" />
 
-        <TextView
-            android:id="@+id/tVGolesJugDet"
-            android:layout_width="wrap_content"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/favPlayer"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:elevation="5dp"
-            android:fontFamily="sans-serif-black"
-            android:text="G"
-            android:textAllCaps="true"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:typeface="normal" />
-
-        <TextView
-            android:id="@+id/tVAsJugDet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:elevation="5dp"
-            android:fontFamily="sans-serif-black"
-            android:text="A"
-            android:textAllCaps="true"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:typeface="normal" />
+            android:clickable="true"
+            android:src="@drawable/ic_favoritos" />
 
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
