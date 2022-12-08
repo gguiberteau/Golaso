@@ -5,12 +5,14 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import es.unex.giiis.golaso.databinding.ActivityMainBinding;
-import retrofit2.Retrofit;
+import es.unex.giiis.golaso.ui.ajustes.AjustesActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,12 +37,37 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void onRestart() {
+        super.onRestart();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        super.onCreateOptionsMenu(menu);
+        // Inflate the menu; this adds items to the action bar if it is present.
+
+        getMenuInflater().inflate(R.menu.main, menu);
 
         return true;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id == R.id.action_settings) {
+
+            //Lanzar actividad de preferencias
+            Intent intent = new Intent(this, AjustesActivity.class);
+            startActivity(intent);
+
+            return true;
+
+        }
+
+        return super.onOptionsItemSelected(item);
 
     }
 
