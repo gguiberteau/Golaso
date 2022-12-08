@@ -12,6 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,6 +67,15 @@ public class ResultadoAdapter extends RecyclerView.Adapter<ResultadoAdapter.View
             holder.tVNombreLocal.setText(partido.getLocal());
             holder.tVNombreVis.setText(partido.getVisitante());
 
+            Glide.with(context)
+                    .load(local.getLogo())
+                    .override(120, 120)
+                    .into(holder.iVEquipoLocal);
+            Glide.with(context)
+                    .load(Uri.parse(visitante.getLogo()))
+                    .override(120, 120)
+                    .into(holder.iVEquipoVis);
+
             if (partido.getMarcador() != null) {
                 String marcador = String.valueOf(partido.getMarcador());
                 char target = '–';
@@ -102,8 +113,10 @@ public class ResultadoAdapter extends RecyclerView.Adapter<ResultadoAdapter.View
                 holder.tVNombreLocal.setTextColor(Color.parseColor("#ffffff"));
             }
 
-            if (partido.getHora() != null)
-                holder.tVHora.setText(partido.getHora());
+            if (partido.getHora() != null) {
+                String hora = partido.getHora().substring(0, 5);
+                holder.tVHora.setText(hora);
+            }
             else
                 holder.tVHora.setText("Hora por determinar");
 
@@ -129,7 +142,7 @@ public class ResultadoAdapter extends RecyclerView.Adapter<ResultadoAdapter.View
         notifyDataSetChanged();
     }
 
-    private Equipo buscarEquipoPorId(int id) {
+    private Equipo buscarEquipoPorId(long id) {
 
         boolean enc = false;
         Equipo e = null;

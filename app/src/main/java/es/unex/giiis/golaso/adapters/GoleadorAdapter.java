@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -26,11 +25,13 @@ public class GoleadorAdapter extends RecyclerView.Adapter<GoleadorAdapter.ViewHo
     List<Jugador> goleadores;
     List<Jugador> topGoleadores;
     final int NUM_TOP = 20;
+    private ItemClickListener clickListener;
 
-    public GoleadorAdapter(Context context, List<Jugador> responseList) {
+    public GoleadorAdapter(Context context, List<Jugador> responseList, ItemClickListener clickListener) {
         this.context = context;
         this.goleadores = responseList;
         this.topGoleadores = new ArrayList<>();
+        this.clickListener = clickListener;
     }
 
     @NonNull
@@ -47,15 +48,14 @@ public class GoleadorAdapter extends RecyclerView.Adapter<GoleadorAdapter.ViewHo
 
             Jugador goleador = topGoleadores.get(position);
 
-            GlideApp.with(context)
+            Glide.with(context)
                     .load("https://countryflagsapi.com/png/" + goleador.getPais().toLowerCase())
-                    .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                    //.diskCacheStrategy(DiskCacheStrategy.RESOURCE)
                     .override(120, 60)
                     .into(holder.iVPais);
 
             Glide.with(context)
-                    .load(R.drawable.ic_perfil)
-                    .override(60, 60)
+                    .load(goleador.getFoto()).error(R.drawable.ic_perfil)
                     .into(holder.iVJugador);
 
             holder.tVPos.setText(String.valueOf(position + 1) + ".");
@@ -63,6 +63,13 @@ public class GoleadorAdapter extends RecyclerView.Adapter<GoleadorAdapter.ViewHo
             holder.tVGolesJug.setText(String.valueOf(goleador.getGoles()));
             holder.tVAsJug.setText(String.valueOf(goleador.getAsistencias()));
             holder.tVEquipoJug.setText(goleador.getEquipo());
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    clickListener.onItemClick(goleador);
+                }
+            });
 
         }
     }
@@ -105,6 +112,9 @@ public class GoleadorAdapter extends RecyclerView.Adapter<GoleadorAdapter.ViewHo
         }
     }
 
+    public interface ItemClickListener {
+        void onItemClick(Jugador jugador);
+    }
 
 }
 

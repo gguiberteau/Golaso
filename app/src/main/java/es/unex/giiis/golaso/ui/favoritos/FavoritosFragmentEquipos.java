@@ -8,21 +8,21 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import es.unex.giiis.golaso.databinding.FragmentFavoritosMisFavsBinding;
+import es.unex.giiis.golaso.databinding.FragmentFavoritosEquiposBinding;
 
-public class FavoritosFragmentMisFavs extends Fragment {
+public class FavoritosFragmentEquipos extends Fragment {
 
-    private FragmentFavoritosMisFavsBinding binding;
+    private FragmentFavoritosEquiposBinding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        binding = FragmentFavoritosMisFavsBinding.inflate(inflater, container, false);
+        binding = FragmentFavoritosEquiposBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textMisFavs;
-        textView.setText("Este es el FavoritosFragmentMisFavs");
+        final TextView textView = binding.textEquiposFavs;
+        textView.setText("Este es el FavoritosFragmentEquipos");
 
         return root;
 
