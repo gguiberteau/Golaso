@@ -1,7 +1,6 @@
 package es.unex.giiis.golaso.adapters;
 
-import android.support.annotation.NonNull;
-
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
@@ -20,13 +19,13 @@ public class BuscarAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
 
-        if (position == 0) {
+        if (position == 1) {
 
-            return new BuscarJugadoresFragment();
+            return new BuscarEquiposFragment();
 
         }else {
 
-            return new BuscarEquiposFragment();
+            return new BuscarJugadoresFragment();
 
         }
     }

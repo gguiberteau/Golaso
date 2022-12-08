@@ -33,6 +33,7 @@ public class BuscarFragment extends Fragment {
         ViewPager2 mViewPager2 = root.findViewById(R.id.buscarViewPager);
         BuscarAdapter mAdapter = new BuscarAdapter(this);
 
+
         mViewPager2.setAdapter(mAdapter);
 
         new TabLayoutMediator(mTabLayout, mViewPager2, (tab, position) -> {
