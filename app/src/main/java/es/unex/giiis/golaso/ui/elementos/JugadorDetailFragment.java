@@ -1,9 +1,7 @@
 package es.unex.giiis.golaso.ui.elementos;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,13 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.graphics.drawable.RoundedBitmapDrawable;
-import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.tabs.TabLayout;
 
 import es.unex.giiis.golaso.R;
 import es.unex.giiis.golaso.databinding.FragmentJugadorDetailBinding;
@@ -45,20 +40,20 @@ public class JugadorDetailFragment extends Fragment {
     private String mPosicion;
     private String mEquipo;
     private String mFoto;
-    private int mId;
-    private int mGoles;
-    private int mAsistencias;
-    private int mPj;
-    private int mFechaNac;
-    private int mEdad;
+    private long mId;
+    private long mGoles;
+    private long mAsistencias;
+    private long mPj;
+    private long mFechaNac;
+    private long mEdad;
 
     private Jugador mJugador;
 
 
     public static JugadorDetailFragment newInstance(String nombre, String pais, String posicion,
-                                                    String equipo, String foto, int id, int goles,
-                                                    int asistencias, int pj, int fechaNac,
-                                                    int edad){
+                                                    String equipo, String foto, long id, long goles,
+                                                    long asistencias, long pj, long fechaNac,
+                                                    long edad){
 
         JugadorDetailFragment fragment = new JugadorDetailFragment();
         Bundle args = new Bundle();
@@ -68,12 +63,12 @@ public class JugadorDetailFragment extends Fragment {
         args.putString(ARG_PARAM3, posicion);
         args.putString(ARG_PARAM4, equipo);
         args.putString(ARG_PARAM5, foto);
-        args.putInt(ARG_PARAM6, id);
-        args.putInt(ARG_PARAM7, goles);
-        args.putInt(ARG_PARAM8, asistencias);
-        args.putInt(ARG_PARAM9, pj);
-        args.putInt(ARG_PARAM10, fechaNac);
-        args.putInt(ARG_PARAM11, edad);
+        args.putLong(ARG_PARAM6, id);
+        args.putLong(ARG_PARAM7, goles);
+        args.putLong(ARG_PARAM8, asistencias);
+        args.putLong(ARG_PARAM9, pj);
+        args.putLong(ARG_PARAM10, fechaNac);
+        args.putLong(ARG_PARAM11, edad);
 
         fragment.setArguments(args);
 
@@ -91,12 +86,12 @@ public class JugadorDetailFragment extends Fragment {
         args.putString(ARG_PARAM3, jugador.getPosicion());
         args.putString(ARG_PARAM4, jugador.getEquipo());
         args.putString(ARG_PARAM5, jugador.getFoto());
-        args.putInt(ARG_PARAM6, jugador.getIdJugador());
-        args.putInt(ARG_PARAM7, jugador.getGoles());
-        args.putInt(ARG_PARAM8, jugador.getAsistencias());
-        args.putInt(ARG_PARAM9, jugador.getPartidosJugados());
-        args.putInt(ARG_PARAM10, jugador.getAñoNac());
-        args.putInt(ARG_PARAM11, jugador.getEdad());
+        args.putLong(ARG_PARAM6, jugador.getIdJugador());
+        args.putLong(ARG_PARAM7, jugador.getGoles());
+        args.putLong(ARG_PARAM8, jugador.getAsistencias());
+        args.putLong(ARG_PARAM9, jugador.getPartidosJugados());
+        args.putLong(ARG_PARAM10, jugador.getAñoNac());
+        args.putLong(ARG_PARAM11, jugador.getEdad());
 
         fragment.setArguments(args);
 
@@ -116,12 +111,12 @@ public class JugadorDetailFragment extends Fragment {
             mPosicion = getArguments().getString(ARG_PARAM3);
             mEquipo = getArguments().getString(ARG_PARAM4);
             mFoto = getArguments().getString(ARG_PARAM5);
-            mId = getArguments().getInt(ARG_PARAM6);
-            mGoles = getArguments().getInt(ARG_PARAM7);
-            mAsistencias = getArguments().getInt(ARG_PARAM8);
-            mPj = getArguments().getInt(ARG_PARAM9);
-            mFechaNac = getArguments().getInt(ARG_PARAM10);
-            mEdad = getArguments().getInt(ARG_PARAM11);
+            mId = getArguments().getLong(ARG_PARAM6);
+            mGoles = getArguments().getLong(ARG_PARAM7);
+            mAsistencias = getArguments().getLong(ARG_PARAM8);
+            mPj = getArguments().getLong(ARG_PARAM9);
+            mFechaNac = getArguments().getLong(ARG_PARAM10);
+            mEdad = getArguments().getLong(ARG_PARAM11);
 
             mJugador = new Jugador(mId, mNombre, mEquipo, mPosicion, mGoles, mAsistencias, mEdad,
                     mFechaNac, mPj, mPais, mFoto);
@@ -129,6 +124,7 @@ public class JugadorDetailFragment extends Fragment {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

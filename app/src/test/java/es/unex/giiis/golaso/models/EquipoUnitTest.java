@@ -1,7 +1,5 @@
 package es.unex.giiis.golaso.models;
 
-
-
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
@@ -18,7 +16,7 @@ public class EquipoUnitTest {
                 0, 0, 0, 0, 0,
                 0, 0);
 
-        assertEquals((e.getIdEquipo()), 42);
+        assertEquals(42, e.getIdEquipo());
 
     }
 
@@ -31,7 +29,7 @@ public class EquipoUnitTest {
                 0, 0);
 
         e.setIdEquipo(21);
-        assertEquals((e.getIdEquipo()), 21);
+        assertEquals(21, e.getIdEquipo());
 
     }
 
@@ -43,7 +41,7 @@ public class EquipoUnitTest {
                 0, 0, 0, 0, 0,
                 0, 0);
 
-        assertEquals((e.getNombre()), "Betis");
+        assertEquals("Betis", e.getNombre());
 
     }
 
@@ -56,7 +54,7 @@ public class EquipoUnitTest {
                 0, 0);
 
         e.setNombre("Sevilla");
-        assertEquals((e.getNombre()), "Sevilla");
+        assertEquals("Sevilla", e.getNombre());
 
     }
 
@@ -68,7 +66,7 @@ public class EquipoUnitTest {
                 0, 0, 0, 0, 0,
                 0, 0);
 
-        assertEquals((e.getEntrenador()), "Luis Enrique");
+        assertEquals("Luis Enrique", e.getEntrenador());
 
     }
 
@@ -81,7 +79,7 @@ public class EquipoUnitTest {
                 0, 0);
 
         e.setEntrenador("Vicente del Bosque");
-        assertEquals((e.getEntrenador()), "Vicente del Bosque");
+        assertEquals("Vicente del Bosque", e.getEntrenador());
 
     }
 
@@ -93,7 +91,7 @@ public class EquipoUnitTest {
                 "PosiciónAcceso", 0, 0, 0,
                 0, 0, 0, 0, 0);
 
-        assertEquals((e.getEstadio()), "Benito Villamarín");
+        assertEquals("Benito Villamarín", e.getEstadio());
 
     }
 
@@ -106,7 +104,7 @@ public class EquipoUnitTest {
                 0, 0, 0, 0, 0);
 
         e.setEstadio("Santiago Bernabéu");
-        assertEquals((e.getEstadio()), "Santiago Bernabéu");
+        assertEquals("Santiago Bernabéu", e.getEstadio());
 
     }
 
@@ -118,7 +116,7 @@ public class EquipoUnitTest {
                 "PosiciónAcceso", 0, 0, 0,
                 0, 0, 0, 0, 0);
 
-        assertEquals((e.getUbicacion()), "Talayuela");
+        assertEquals("Talayuela", e.getUbicacion());
 
     }
 
@@ -131,7 +129,7 @@ public class EquipoUnitTest {
                 0, 0, 0, 0, 0);
 
         e.setUbicacion("Badajoz");
-        assertEquals((e.getUbicacion()), "Badajoz");
+        assertEquals("Badajoz", e.getUbicacion());
 
     }
 
@@ -143,7 +141,7 @@ public class EquipoUnitTest {
                 "PosiciónAcceso", 0, 0, 0,
                 0, 0, 0, 0, 0);
 
-        assertEquals((e.getLogo()), "https://acortar.link/jaf6No");
+        assertEquals("https://acortar.link/jaf6No", e.getLogo());
 
     }
 
@@ -156,7 +154,7 @@ public class EquipoUnitTest {
                 0, 0, 0, 0, 0);
 
         e.setLogo("https://acortar.link/jdmV9f");
-        assertEquals((e.getLogo()), "https://acortar.link/jdmV9f");
+        assertEquals("https://acortar.link/jdmV9f", e.getLogo());
 
     }
 
@@ -168,7 +166,7 @@ public class EquipoUnitTest {
                 "Primera", 0, 0, 0,
                 0, 0, 0, 0, 0);
 
-        assertEquals((e.getPosicionAcesso()), "Primera");
+        assertEquals("Primera", e.getPosicionAcesso());
 
     }
 
@@ -181,7 +179,7 @@ public class EquipoUnitTest {
                 0, 0, 0, 0, 0);
 
         e.setPosicionAcesso("Segunda");
-        assertEquals((e.getPosicionAcesso()), "Segunda");
+        assertEquals("Segunda", e.getPosicionAcesso());
 
     }
 
@@ -193,7 +191,7 @@ public class EquipoUnitTest {
                 "PosiciónAcceso", 3, 0, 0,
                 0, 0, 0, 0, 0);
 
-        assertEquals((e.getPosicion()), 3);
+        assertEquals(3, e.getPosicion());
 
     }
 
@@ -206,7 +204,7 @@ public class EquipoUnitTest {
                 0, 0, 0, 0, 0);
 
         e.setPosicion(5);
-        assertEquals((e.getPosicion()), 5);
+        assertEquals(5, e.getPosicion());
 
     }
 
@@ -218,7 +216,7 @@ public class EquipoUnitTest {
                 "PosiciónAcceso", 0, 10, 0,
                 0, 0, 0, 0, 0);
 
-        assertEquals((e.getGf()), 10);
+        assertEquals(10, e.getGf());
 
     }
 
@@ -231,7 +229,7 @@ public class EquipoUnitTest {
                 0, 0, 0, 0, 0);
 
         e.setGf(15);
-        assertEquals((e.getGf()), 15);
+        assertEquals(15, e.getGf());
 
     }
 
@@ -243,7 +241,7 @@ public class EquipoUnitTest {
                 "PosiciónAcceso", 0, 0, 5,
                 0, 0, 0, 0, 0);
 
-        assertEquals((e.getGc()), 5);
+        assertEquals(5, e.getGc());
 
     }
 
@@ -256,7 +254,7 @@ public class EquipoUnitTest {
                 0, 0, 0, 0, 0);
 
         e.setGc(10);
-        assertEquals((e.getGc()), 10);
+        assertEquals(10, e.getGc());
 
     }
 
@@ -268,7 +266,7 @@ public class EquipoUnitTest {
                 "PosiciónAcceso", 0, 0, 0,
                 20, 0, 0, 0, 0);
 
-        assertEquals((e.getPj()), 20);
+        assertEquals(20, e.getPj());
 
     }
 
@@ -281,7 +279,7 @@ public class EquipoUnitTest {
                 20, 0, 0, 0, 0);
 
         e.setPj(25);
-        assertEquals((e.getPj()), 25);
+        assertEquals(25, e.getPj());
 
     }
 
@@ -293,7 +291,7 @@ public class EquipoUnitTest {
                 "PosiciónAcceso", 0, 0, 0,
                 0, 40, 0, 0, 0);
 
-        assertEquals((e.getPg()), 40);
+        assertEquals(40, e.getPg());
 
     }
 
@@ -306,7 +304,7 @@ public class EquipoUnitTest {
                 0, 40, 0, 0, 0);
 
         e.setPg(45);
-        assertEquals((e.getPg()), 45);
+        assertEquals(45, e.getPg());
 
     }
 
@@ -318,7 +316,7 @@ public class EquipoUnitTest {
                 "PosiciónAcceso", 0, 0, 0,
                 0, 0, 2, 0, 0);
 
-        assertEquals((e.getPe()), 2);
+        assertEquals(2, e.getPe());
 
     }
 
@@ -331,7 +329,7 @@ public class EquipoUnitTest {
                 0, 0, 2, 0, 0);
 
         e.setPe(6);
-        assertEquals((e.getPe()), 6);
+        assertEquals(6, e.getPe());
 
     }
 
@@ -343,7 +341,7 @@ public class EquipoUnitTest {
                 "PosiciónAcceso", 0, 0, 0,
                 0, 0, 0, 1, 0);
 
-        assertEquals((e.getPp()), 1);
+        assertEquals(1, e.getPp());
 
     }
 
@@ -356,7 +354,7 @@ public class EquipoUnitTest {
                 0, 0, 0, 1, 0);
 
         e.setPp(3);
-        assertEquals((e.getPp()), 3);
+        assertEquals(3, e.getPp());
 
     }
 
@@ -368,7 +366,7 @@ public class EquipoUnitTest {
                 "PosiciónAcceso", 0, 0, 0,
                 0, 0, 0, 0, 27);
 
-        assertEquals((e.getPt()), 27);
+        assertEquals(27, e.getPt());
 
     }
 
@@ -381,7 +379,7 @@ public class EquipoUnitTest {
                 0, 0, 0, 0, 27);
 
         e.setPt(30);
-        assertEquals((e.getPt()), 30);
+        assertEquals(30, e.getPt());
 
     }
 

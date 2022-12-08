@@ -10,11 +10,11 @@ public class Jugador {
 
     @SerializedName("asistencias")
     @Expose
-    private Integer asistencias;
+    private long asistencias;
 
     @SerializedName("edad")
     @Expose
-    private Integer edad;
+    private long edad;
 
     @SerializedName("equipo")
     @Expose
@@ -22,19 +22,19 @@ public class Jugador {
 
     @SerializedName("fecha_nac")
     @Expose
-    private Integer añoNac;
+    private long añoNac;
 
     @SerializedName("goles")
     @Expose
-    private Integer goles;
+    private long goles;
 
     @SerializedName("id_equipo")
     @Expose
-    private Integer idEquipo;
+    private long idEquipo;
 
     @SerializedName("id_jugador")
     @Expose
-    private Integer idJugador;
+    private long idJugador;
 
     @SerializedName("nombre")
     @Expose
@@ -46,7 +46,7 @@ public class Jugador {
 
     @SerializedName("pj")
     @Expose
-    private Integer partidosJugados;
+    private long partidosJugados;
 
     @SerializedName("posicion")
     @Expose
@@ -56,8 +56,8 @@ public class Jugador {
     @Expose
     private String foto;
 
-    public Jugador(Integer mId, String mNombre, String mEquipo, String mPosicion, Integer mGoles,
-                   Integer mAsistencias, Integer mEdad, Integer mFechaNacimiento, Integer mPartidos,
+    public Jugador(long mId, String mNombre, String mEquipo, String mPosicion, long mGoles,
+                   long mAsistencias, long mEdad, long mFechaNacimiento, long mPartidos,
                    String mPais, String mFoto) {
 
         this.idJugador = mId;
@@ -74,19 +74,19 @@ public class Jugador {
 
     }
 
-    public Integer getAsistencias() {
+    public long getAsistencias() {
         return asistencias;
     }
 
-    public void setAsistencias(Integer asistencias) {
+    public void setAsistencias(long asistencias) {
         this.asistencias = asistencias;
     }
 
-    public Integer getEdad() {
+    public long getEdad() {
         return edad;
     }
 
-    public void setEdad(Integer edad) {
+    public void setEdad(long edad) {
         this.edad = edad;
     }
 
@@ -100,35 +100,35 @@ public class Jugador {
         this.equipo = equipo;
     }
 
-    public Integer getAñoNac() {
+    public long getAñoNac() {
         return añoNac;
     }
 
-    public void setAñoNac(Integer añoNac) {
+    public void setAñoNac(long añoNac) {
         this.añoNac = añoNac;
     }
 
-    public Integer getGoles() {
+    public long getGoles() {
         return goles;
     }
 
-    public void setGoles(Integer goles) {
+    public void setGoles(long goles) {
         this.goles = goles;
     }
 
-    public Integer getIdEquipo() {
+    public long getIdEquipo() {
         return idEquipo;
     }
 
-    public void setIdEquipo(Integer idEquipo) {
+    public void setIdEquipo(long idEquipo) {
         this.idEquipo = idEquipo;
     }
 
-    public Integer getIdJugador() {
+    public long getIdJugador() {
         return idJugador;
     }
 
-    public void setIdJugador(Integer idJugador) {
+    public void setIdJugador(long idJugador) {
         this.idJugador = idJugador;
     }
 
@@ -148,11 +148,11 @@ public class Jugador {
         this.pais = pais;
     }
 
-    public Integer getPartidosJugados() {
+    public long getPartidosJugados() {
         return partidosJugados;
     }
 
-    public void setPartidosJugados(Integer partidosJugados) {
+    public void setPartidosJugados(long partidosJugados) {
 
         this.partidosJugados = partidosJugados;
 
