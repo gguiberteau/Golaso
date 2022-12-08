@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.preference.PreferenceManager;
+import android.preference.PreferenceManager;
 
 import es.unex.giiis.golaso.R;
 
