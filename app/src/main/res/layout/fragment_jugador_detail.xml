@@ -10,7 +10,8 @@
     android:orientation="vertical"
     android:background="@drawable/ic_player_card"
     tools:context=".ui.elementos.JugadorDetailFragment"
-    app:layout_constraintBottom_toTopOf="@+id/nav_view">
+    app:layout_constraintBottom_toTopOf="@+id/nav_view"
+    >
 
     <ImageView
         android:id="@+id/caraJugDetail"
@@ -55,7 +56,8 @@
         app:layout_constraintHorizontal_bias="0.265"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.734">
+        app:layout_constraintVertical_bias="0.734"
+        >
 
         <TextView
             android:id="@+id/tVEdadJugDetail"
@@ -66,10 +68,10 @@
             android:elevation="5dp"
             android:fontFamily="sans-serif-black"
             android:textAllCaps="true"
-            android:textColor="#FFFFFF"
             android:textSize="14sp"
             android:textStyle="bold"
-            android:typeface="normal" />
+            android:typeface="normal"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/tVSiglaPais"
@@ -80,10 +82,10 @@
             android:elevation="5dp"
             android:fontFamily="sans-serif-black"
             android:textAllCaps="true"
-            android:textColor="#FFFFFF"
             android:textSize="14sp"
             android:textStyle="bold"
-            android:typeface="normal" />
+            android:typeface="normal"
+            android:textColor="@color/black"/>
 
         <ImageView
             android:id="@+id/iVBandera"
@@ -114,10 +116,10 @@
             android:elevation="5dp"
             android:fontFamily="sans-serif-black"
             android:textAllCaps="true"
-            android:textColor="#FFFFFF"
             android:textSize="14sp"
             android:textStyle="bold"
-            android:typeface="normal" />
+            android:typeface="normal"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/tVGolesJugDet"
@@ -127,10 +129,10 @@
             android:elevation="5dp"
             android:fontFamily="sans-serif-black"
             android:textAllCaps="true"
-            android:textColor="#FFFFFF"
             android:textSize="14sp"
             android:textStyle="bold"
-            android:typeface="normal" />
+            android:typeface="normal"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/tVAsJugDet"
@@ -140,10 +142,10 @@
             android:elevation="5dp"
             android:fontFamily="sans-serif-black"
             android:textAllCaps="true"
-            android:textColor="#FFFFFF"
             android:textSize="14sp"
             android:textStyle="bold"
-            android:typeface="normal" />
+            android:typeface="normal"
+            android:textColor="@color/black"/>
 
     </LinearLayout>
 
@@ -168,6 +170,5 @@
         android:src="@drawable/ic_favoritos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
