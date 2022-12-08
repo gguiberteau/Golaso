@@ -142,7 +142,7 @@ public class ResultadoAdapter extends RecyclerView.Adapter<ResultadoAdapter.View
         notifyDataSetChanged();
     }
 
-    private Equipo buscarEquipoPorId(int id) {
+    private Equipo buscarEquipoPorId(long id) {
 
         boolean enc = false;
         Equipo e = null;

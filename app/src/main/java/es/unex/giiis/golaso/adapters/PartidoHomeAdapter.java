@@ -136,7 +136,7 @@ public class PartidoHomeAdapter extends RecyclerView.Adapter<PartidoHomeAdapter.
         }
     }
 
-    private Equipo buscarEquipoPorId(int id) {
+    private Equipo buscarEquipoPorId(long id) {
 
         boolean enc = false;
         Equipo e = null;

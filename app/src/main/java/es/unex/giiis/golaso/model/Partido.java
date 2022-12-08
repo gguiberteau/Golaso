@@ -10,7 +10,7 @@ public class Partido {
 
     @SerializedName("Asistencia")
     @Expose
-    public int asistencia;
+    public long asistencia;
 
     @SerializedName("Día")
     @Expose
@@ -30,7 +30,7 @@ public class Partido {
 
     @SerializedName("Jornada")
     @Expose
-    public int jornada;
+    public long jornada;
 
     @SerializedName("Local")
     @Expose
@@ -46,17 +46,35 @@ public class Partido {
 
     @SerializedName("id_local")
     @Expose
-    public int id_local;
+    public long id_local;
 
     @SerializedName("id_visitante")
     @Expose
-    public int id_visitante;
+    public long id_visitante;
 
-    public int getAsistencia() {
+    public Partido(long id_local, long id_visitante, String local, String visitante, String marcador,
+                   String estadio, String fecha, String hora, String día, long asistencia,
+                   long jornada){
+
+        this.id_local = id_local;
+        this.id_visitante = id_visitante;
+        this.local = local;
+        this.visitante = visitante;
+        this.marcador = marcador;
+        this.estadio = estadio;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.día = día;
+        this.asistencia = asistencia;
+        this.jornada = jornada;
+
+    }
+
+    public long getAsistencia() {
         return asistencia;
     }
 
-    public void setAsistencia(int asistencia) {
+    public void setAsistencia(long asistencia) {
         this.asistencia = asistencia;
     }
 
@@ -92,11 +110,11 @@ public class Partido {
         this.hora = hora;
     }
 
-    public int getJornada() {
+    public long getJornada() {
         return jornada;
     }
 
-    public void setJornada(int jornada) {
+    public void setJornada(long jornada) {
         this.jornada = jornada;
     }
 
@@ -124,19 +142,19 @@ public class Partido {
         this.visitante = visitante;
     }
 
-    public int getId_local() {
+    public long getId_local() {
         return id_local;
     }
 
-    public void setId_local(int id_local) {
+    public void setId_local(long id_local) {
         this.id_local = id_local;
     }
 
-    public int getId_visitante() {
+    public long getId_visitante() {
         return id_visitante;
     }
 
-    public void setId_visitante(int id_visitante) {
+    public void setId_visitante(long id_visitante) {
         this.id_visitante = id_visitante;
     }
 }
