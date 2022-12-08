@@ -55,4 +55,8 @@
     <string name="settings_theme_title" >Choose theme</string>
     <string name="settings_theme_dialog_title" >Choose theme</string>
     <string name="settings_toolbar" >Settings</string>
+    <string name="icon_login">Log In</string>
+    <string name="icon_modificar_perfil">Modify Profile</string>
+    <string name="edit_user">User</string>
+    <string name="edit_password">Password</string>
 </resources>

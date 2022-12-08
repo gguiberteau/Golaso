@@ -49,10 +49,14 @@
     <string name="PlayerPJ">Partidos jugados:</string>
     <string name="PlayerCountry">País:</string>
     <string name="ShareTeam">Compartir equipo</string>
-    <string name="action_settings" >Ajustes</string>
-    <string name="settings_theme_key" >Tema</string>
-    <string name="settings_fragment_tab" >ajustes_fragmento_tab</string>
-    <string name="settings_theme_title" >Elegir tema</string>
-    <string name="settings_theme_dialog_title" >Elegir tema</string>
-    <string name="settings_toolbar" >Ajustes</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="settings_theme_key">Tema</string>
+    <string name="settings_fragment_tab">ajustes_fragmento_tab</string>
+    <string name="settings_theme_title">Elegir tema</string>
+    <string name="settings_theme_dialog_title">Elegir tema</string>
+    <string name="settings_toolbar">Ajustes</string>
+    <string name="icon_login">Iniciar sesión</string>
+    <string name="icon_modificar_perfil">Modificar Perfil</string>
+    <string name="edit_user">Usuario</string>
+    <string name="edit_password">Contrasena</string>
 </resources>
