@@ -27,7 +27,7 @@
         </activity>
 
         <activity
-            android:name=".ajustes.AjustesActivity"
+            android:name=".ui.ajustes.AjustesActivity"
             android:exported="true"
             android:label="@string/action_settings" />
     </application>

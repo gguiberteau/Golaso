@@ -14,37 +14,34 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import es.unex.giiis.golaso.R;
 import es.unex.giiis.golaso.model.Equipo;
 import es.unex.giiis.golaso.model.Partido;
 
-public class ResultadoEquipoAdapter extends RecyclerView.Adapter<ResultadoEquipoAdapter.ViewHolder> {
+public class PartidoHomeAdapter extends RecyclerView.Adapter<PartidoHomeAdapter.ViewHolder> {
 
     Context context;
     List<Partido> partidos;
     List<Equipo> equipos;
-    List<Partido> partidosEquipo;
-    Equipo equipo;
-    int idEquipo;
+    public List<Partido> partidosDia;
+    String fecha;
 
-    public ResultadoEquipoAdapter(Context context, List<Partido> partidosList, List<Equipo> equiposList, int id) {
+    public PartidoHomeAdapter(Context context, List<Partido> partidosList, List<Equipo> equiposList) {
         this.context = context;
         this.partidos = partidosList;
         this.equipos = equiposList;
-        this.equipo = null;
-        this.idEquipo = id;
-        this.partidosEquipo = new ArrayList<>();
+        this.partidosDia = new ArrayList<>();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        Date date = new Date();
+        this.fecha = dateFormat.format(date);
     }
 
-    private void buscarPartidosEquipo() {
-        for (Partido p:partidos) {
-            if (p.getId_visitante() == idEquipo || p.getId_local() == idEquipo)
-                partidosEquipo.add(p);
-        }
-    }
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -54,9 +51,9 @@ public class ResultadoEquipoAdapter extends RecyclerView.Adapter<ResultadoEquipo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        if (!partidosEquipo.isEmpty()) {
 
-            Partido partido = partidosEquipo.get(position);
+        if (!partidosDia.isEmpty()) {
+            Partido partido = partidosDia.get(position);
 
             Equipo local = buscarEquipoPorId(partido.getId_local());
             Equipo visitante = buscarEquipoPorId(partido.getId_visitante());
@@ -64,19 +61,14 @@ public class ResultadoEquipoAdapter extends RecyclerView.Adapter<ResultadoEquipo
             holder.tVNombreLocal.setText(partido.getLocal());
             holder.tVNombreVis.setText(partido.getVisitante());
 
-            if (local.getLogo() != null) {
-                Glide.with(context)
-                        .load(local.getLogo())
-                        .override(120, 120)
-                        .into(holder.iVEquipoLocal);
-            }
-
-            if (visitante.getLogo() != null) {
-                Glide.with(context)
-                        .load(Uri.parse(visitante.getLogo()))
-                        .override(120, 120)
-                        .into(holder.iVEquipoVis);
-            }
+            Glide.with(context)
+                    .load(local.getLogo())
+                    .override(120, 120)
+                    .into(holder.iVEquipoLocal);
+            Glide.with(context)
+                    .load(Uri.parse(visitante.getLogo()))
+                    .override(120, 120)
+                    .into(holder.iVEquipoVis);
 
             if (partido.getMarcador() != null) {
                 String marcador = String.valueOf(partido.getMarcador());
@@ -122,16 +114,26 @@ public class ResultadoEquipoAdapter extends RecyclerView.Adapter<ResultadoEquipo
             else
                 holder.tVHora.setText("Hora por determinar");
 
-            if(partido.getFecha() != null)
+            if (partido.getFecha() != null)
                 holder.tVFecha.setText(partido.getFecha());
             else
-                holder.tVHora.setText("Fecha por determinar");
+                holder.tVHora.setText("Hora por determinar");
+
         }
     }
 
-    @Override
-    public int getItemCount() {
-        return partidosEquipo.size();
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+        seleccionarPartidosDia();
+        notifyDataSetChanged();
+    }
+
+    public void seleccionarPartidosDia () {
+        partidosDia.clear();
+        for (Partido p:partidos) {
+            if (p.getFecha().equals(this.fecha))
+                partidosDia.add(p);
+        }
     }
 
     private Equipo buscarEquipoPorId(int id) {
@@ -148,21 +150,25 @@ public class ResultadoEquipoAdapter extends RecyclerView.Adapter<ResultadoEquipo
         return e;
     }
 
+    @Override
+    public int getItemCount() {
+        return partidosDia.size();
+    }
+
     public void swapP(List<Partido> partidos) {
         this.partidos = partidos;
-        buscarPartidosEquipo();
+        seleccionarPartidosDia();
         notifyDataSetChanged();
     }
 
     public void swapE(List<Equipo> equipos) {
         this.equipos = equipos;
-        equipo = buscarEquipoPorId(idEquipo);
         notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tVNombreLocal, tVGolesLocal, tVNombreVis, tVGolesVis, tVHora, tVFecha;
+        TextView tVNombreLocal, tVGolesLocal, tVNombreVis, tVGolesVis, tVHora, tVFecha, tVVacio;
         ImageView iVEquipoLocal, iVEquipoVis;
 
         public ViewHolder(@NonNull View itemView) {
@@ -176,7 +182,7 @@ public class ResultadoEquipoAdapter extends RecyclerView.Adapter<ResultadoEquipo
             tVHora = itemView.findViewById(R.id.tVHora);
             tVGolesVis = itemView.findViewById(R.id.tVGolesVis);
             tVNombreVis = itemView.findViewById(R.id.tVNombreVis);
-
+            tVVacio = itemView.findViewById(R.id.tVVacio);
         }
     }
 }

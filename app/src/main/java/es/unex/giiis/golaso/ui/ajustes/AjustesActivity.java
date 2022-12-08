@@ -1,4 +1,4 @@
-package es.unex.giiis.golaso.ajustes;
+package es.unex.giiis.golaso.ui.ajustes;
 
 import android.os.Bundle;
 

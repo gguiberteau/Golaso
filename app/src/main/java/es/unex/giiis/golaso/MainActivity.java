@@ -7,13 +7,19 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import android.widget.EditText;
 
-import es.unex.giiis.golaso.ajustes.AjustesActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import es.unex.giiis.golaso.databinding.ActivityMainBinding;
+import es.unex.giiis.golaso.ui.ajustes.AjustesActivity;
+import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
     public void onRestart() {
         super.onRestart();
     }

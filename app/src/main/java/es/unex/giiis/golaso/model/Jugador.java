@@ -8,6 +8,24 @@ import javax.annotation.Generated;
 @Generated("jsonschema2pojo")
 public class Jugador {
 
+    public Jugador(Integer mId, String mNombre, String mEquipo, String mPosicion, Integer mGoles,
+                   Integer mAsistencias, Integer mEdad, Integer mFechaNacimiento, Integer mPartidos,
+                   String mPais, String mFoto) {
+
+        this.idJugador = mId;
+        this.nombre = mNombre;
+        this.equipo = mEquipo;
+        this.posicion = mPosicion;
+        this.goles = mGoles;
+        this.asistencias = mAsistencias;
+        this.edad = mEdad;
+        this.añoNac = mFechaNacimiento;
+        this.partidosJugados = mPartidos;
+        this.pais = mPais;
+        this.foto = mFoto;
+
+    }
+
     @SerializedName("asistencias")
     @Expose
     private Integer asistencias;
@@ -51,6 +69,18 @@ public class Jugador {
     @SerializedName("posicion")
     @Expose
     private String posicion;
+
+    @SerializedName("foto")
+    @Expose
+    private String foto;
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
 
     public Integer getAsistencias() {
         return asistencias;

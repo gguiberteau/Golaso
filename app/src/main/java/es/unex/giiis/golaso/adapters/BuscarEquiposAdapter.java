@@ -1,11 +1,16 @@
 package es.unex.giiis.golaso.adapters;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +18,20 @@ import java.util.stream.Collectors;
 
 import es.unex.giiis.golaso.R;
 import es.unex.giiis.golaso.model.Equipo;
+import es.unex.giiis.golaso.model.Jugador;
 
 public class BuscarEquiposAdapter extends RecyclerView.Adapter<BuscarEquiposAdapter.MyViewHolder>{
 
     private List<Equipo> mDataset;
-    private List<Equipo> mOriginalDataset;
+    private List<Equipo> mDatasetOriginal;
+
+    public interface OnTeamClickListener{
+
+        void onTeamClick(Equipo equipo);      //Type of the element to be returned
+
+    }
+
+    public OnTeamClickListener mListener;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and you provide access to all
@@ -28,6 +42,8 @@ public class BuscarEquiposAdapter extends RecyclerView.Adapter<BuscarEquiposAdap
         public TextView mTextViewNombre;
         public TextView mTextViewEntrenador;
         public TextView mTextViewPosicion;
+        public ImageView mImageView;
+
         public View mView;
         public Equipo mItem;
 
@@ -39,6 +55,7 @@ public class BuscarEquiposAdapter extends RecyclerView.Adapter<BuscarEquiposAdap
             mTextViewNombre = v.findViewById(R.id.textViewNombreEquipo);
             mTextViewEntrenador = v.findViewById(R.id.textViewEntrenador);
             mTextViewPosicion = v.findViewById(R.id.textViewPosicion);
+            mImageView = v.findViewById(R.id.itemEquipoLogo);
 
         }
 
@@ -46,16 +63,17 @@ public class BuscarEquiposAdapter extends RecyclerView.Adapter<BuscarEquiposAdap
 
     // Provide a suitable constructor (depends on the kind of dataset)
 
-    public BuscarEquiposAdapter(List<Equipo> myDataset) {
+    public BuscarEquiposAdapter(List<Equipo> myDataset, OnTeamClickListener listener) {
 
-        mDataset = myDataset;
-        mOriginalDataset = new ArrayList<>();
-        mOriginalDataset.addAll(myDataset);
+        this.mDataset = myDataset;
+        this.mListener = listener;
+        this.mDatasetOriginal = new ArrayList<>(myDataset);
 
     }
 
+    @NonNull
     @Override
-    public BuscarEquiposAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
+    public MyViewHolder onCreateViewHolder(ViewGroup parent,
                                                                 int viewType) {
 
         // create a new view
@@ -70,6 +88,7 @@ public class BuscarEquiposAdapter extends RecyclerView.Adapter<BuscarEquiposAdap
 
     // Replace the contents of a view (invoked by the layout manager)
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
 
@@ -77,6 +96,20 @@ public class BuscarEquiposAdapter extends RecyclerView.Adapter<BuscarEquiposAdap
         holder.mTextViewNombre.setText(mDataset.get(position).getNombre());
         holder.mTextViewEntrenador.setText(mDataset.get(position).getEntrenador());
         holder.mTextViewPosicion.setText(mDataset.get(position).getPosicion().toString());
+
+        Picasso.get().load(mDataset.get(position).getLogo()).
+                resize(250, 250).
+                centerCrop().
+                into(holder.mImageView);
+
+        holder.mView.setOnClickListener(v -> {
+
+            // Notify the active callbacks interface (the activity, if the fragment is attached
+            // to one) that an item has been selected.
+
+            mListener.onTeamClick(holder.mItem);
+
+        });
 
     }
 
@@ -89,34 +122,30 @@ public class BuscarEquiposAdapter extends RecyclerView.Adapter<BuscarEquiposAdap
 
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void swap(List<Equipo> dataset){
 
-        mDataset = dataset;
+        mDatasetOriginal = dataset;
         notifyDataSetChanged();
 
     }
 
-    public void filtradoEquipos(String txtBuscar){
+    @SuppressLint("NotifyDataSetChanged")
+    public void filter(String text) {
 
-        int longitud = txtBuscar.length();
+        mDataset.clear();
 
-        if (longitud == 0) {
+        if (text.length() > 0) {
 
-            mDataset.clear();
-            mDataset.addAll(mOriginalDataset);
+            List<Equipo> filteredList = mDatasetOriginal.stream()
+                    .filter(equipo -> equipo.getNombre().toLowerCase().contains(text.toLowerCase()))
+                    .collect(Collectors.toList());
 
-        } else {
-
-            List<Equipo> filteredList = mDataset.stream().filter(equipo -> equipo.getNombre().
-                    toLowerCase().contains(txtBuscar.toLowerCase())).collect(Collectors.toList());
-
-            mDataset.clear();
             mDataset.addAll(filteredList);
+
+            notifyDataSetChanged();
 
         }
 
-        notifyDataSetChanged();
-
     }
-
 }
