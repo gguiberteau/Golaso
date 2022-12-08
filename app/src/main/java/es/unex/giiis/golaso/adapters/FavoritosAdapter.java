@@ -8,12 +8,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import es.unex.giiis.golaso.R;
-import es.unex.giiis.golaso.ui.favoritos.BuscarEquiposFragment;
-import es.unex.giiis.golaso.ui.favoritos.BuscarJugadoresFragment;
+import es.unex.giiis.golaso.ui.buscar.BuscarEquiposFragment;
+import es.unex.giiis.golaso.ui.buscar.BuscarJugadoresFragment;
 import es.unex.giiis.golaso.ui.favoritos.FavoritosFragmentMisFavs;
 
 public class FavoritosAdapter  extends FragmentPagerAdapter {

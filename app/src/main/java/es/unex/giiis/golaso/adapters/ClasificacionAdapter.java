@@ -77,7 +77,8 @@ public class ClasificacionAdapter  extends RecyclerView.Adapter<ClasificacionAda
             String imageUrl = (String) equipo.getLogo();
             Glide.with(context)
                     .load(imageUrl)
-                    .override(60, 60)
+                    .override(80, 80)
+                    .centerInside()
                     .into(holder.iVEscudoEquipo);
 
             holder.tVNombreEquipo.setText(String.valueOf(equipo.getNombre()));
@@ -137,6 +138,6 @@ public class ClasificacionAdapter  extends RecyclerView.Adapter<ClasificacionAda
     }
 
     public interface ItemClickListener {
-        public void onItemClick(Equipo equipo);
+        void onItemClick(Equipo equipo);
     }
 }

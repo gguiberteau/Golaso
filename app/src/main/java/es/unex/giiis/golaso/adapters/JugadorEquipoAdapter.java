@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -26,13 +27,17 @@ public class JugadorEquipoAdapter extends RecyclerView.Adapter<JugadorEquipoAdap
     Context context;
     List<Jugador> jugadores;
     List<Jugador> jugadoresEquipo;
-    private int idEquipo;
+    private final int idEquipo;
+    SwitchCompat mSwitch;
+    private ItemClickListener clickListener;
 
-    public JugadorEquipoAdapter(Context context, List<Jugador> responseList, int idEquipo) {
+    public JugadorEquipoAdapter(Context context, List<Jugador> responseList, int idEquipo, SwitchCompat mSwitch, ItemClickListener clickListener) {
         this.context = context;
         this.jugadores = responseList;
         this.jugadoresEquipo = new ArrayList<>();
         this.idEquipo = idEquipo;
+        this.mSwitch = mSwitch;
+        this.clickListener = clickListener;
     }
 
     //busca los jugadores del equipo y los ordena por nombre
@@ -96,19 +101,35 @@ public class JugadorEquipoAdapter extends RecyclerView.Adapter<JugadorEquipoAdap
                     holder.posicionJug.setBackgroundColor(Color.parseColor("#A73F3F"));
             }
 
-            GlideApp.with(context)
+            Glide.with(context)
                     .load("https://countryflagsapi.com/png/" + jugador.getPais().toLowerCase())
                     .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
                     .override(120, 60)
                     .into(holder.iVPais);
 
             Glide.with(context)
-                    .load(R.drawable.ic_perfil)
-                    .override(60, 60)
+                    .load(jugador.getFoto()).error(R.drawable.ic_perfil)
                     .into(holder.iVJugador);
 
             holder.tVNombreJug.setText(jugador.getNombre());
 
+            mSwitch.setOnCheckedChangeListener((compoundButton, b) -> {
+                if (!mSwitch.isChecked()) {
+                    jugadoresEquipo.sort(Comparator.comparing(Jugador::getNombre));
+                    notifyDataSetChanged();
+                }
+                else {
+                    jugadoresEquipo.sort(Comparator.comparing(Jugador::getPosicion).reversed());
+                    notifyDataSetChanged();
+                }
+            });
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    clickListener.onItemClick(jugador);
+                }
+            });
         }
     }
 
@@ -136,5 +157,9 @@ public class JugadorEquipoAdapter extends RecyclerView.Adapter<JugadorEquipoAdap
             iVPais = itemView.findViewById(R.id.paisJugador);
             posicionJug = itemView.findViewById(R.id.posicionJug);
         }
+    }
+
+    public interface ItemClickListener {
+        void onItemClick(Jugador jugador);
     }
 }

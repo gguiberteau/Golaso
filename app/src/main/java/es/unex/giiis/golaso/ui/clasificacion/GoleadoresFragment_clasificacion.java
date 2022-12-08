@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,8 +19,10 @@ import es.unex.giiis.golaso.R;
 import es.unex.giiis.golaso.adapters.GoleadorAdapter;
 import es.unex.giiis.golaso.api.goleadores.JugadoresNetworkLoaderRunnable;
 import es.unex.giiis.golaso.databinding.FragmentGoleadoresClasificacionBinding;
+import es.unex.giiis.golaso.model.Jugador;
+import es.unex.giiis.golaso.ui.elementos.JugadorDetailFragment;
 
-public class GoleadoresFragment_clasificacion extends Fragment {
+public class GoleadoresFragment_clasificacion extends Fragment implements GoleadorAdapter.ItemClickListener {
 
     private FragmentGoleadoresClasificacionBinding binding;
     RecyclerView recyclerView;
@@ -35,7 +38,7 @@ public class GoleadoresFragment_clasificacion extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
-        GoleadorAdapter adapter = new GoleadorAdapter(this.getContext(), new ArrayList<>());
+        GoleadorAdapter adapter = new GoleadorAdapter(this.getContext(), new ArrayList<>(), this);
 
         AppExecutors.getInstance().networkIO().execute(new JugadoresNetworkLoaderRunnable(goleadores -> adapter.swap(goleadores)));
 
@@ -55,6 +58,19 @@ public class GoleadoresFragment_clasificacion extends Fragment {
         super.onDestroyView();
         binding = null;
 
+    }
+
+    @Override
+    public void onItemClick(Jugador jugador) {
+        Fragment fragment = JugadorDetailFragment
+                .newInstance(jugador.getNombre(), jugador.getPais(), jugador.getPosicion(), jugador.getEquipo(), jugador.getFoto(),
+                        jugador.getIdJugador(), jugador.getGoles(), jugador.getAsistencias(), jugador.getPartidosJugados(),
+                        jugador.getAñoNac(), jugador.getEdad());
+
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frameContainer_clas, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
 }

@@ -52,6 +52,28 @@ public class Jugador {
     @Expose
     private String posicion;
 
+    @SerializedName("foto")
+    @Expose
+    private String foto;
+
+    public Jugador(Integer mId, String mNombre, String mEquipo, String mPosicion, Integer mGoles,
+                   Integer mAsistencias, Integer mEdad, Integer mFechaNacimiento, Integer mPartidos,
+                   String mPais, String mFoto) {
+
+        this.idJugador = mId;
+        this.nombre = mNombre;
+        this.equipo = mEquipo;
+        this.posicion = mPosicion;
+        this.goles = mGoles;
+        this.asistencias = mAsistencias;
+        this.edad = mEdad;
+        this.añoNac = mFechaNacimiento;
+        this.partidosJugados = mPartidos;
+        this.pais = mPais;
+        this.foto = mFoto;
+
+    }
+
     public Integer getAsistencias() {
         return asistencias;
     }
@@ -142,6 +164,18 @@ public class Jugador {
 
     public void setPosicion(String posicion) {
         this.posicion = posicion;
+    }
+
+    public String getFoto() {
+
+        return foto;
+
+    }
+
+    public void setFoto(String foto) {
+
+        this.foto = foto;
+
     }
 
 }
