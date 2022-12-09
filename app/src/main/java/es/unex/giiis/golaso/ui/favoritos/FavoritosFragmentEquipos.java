@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import es.unex.giiis.golaso.databinding.FragmentFavoritosEquiposBinding;
@@ -15,7 +16,7 @@ public class FavoritosFragmentEquipos extends Fragment {
     private FragmentFavoritosEquiposBinding binding;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         binding = FragmentFavoritosEquiposBinding.inflate(inflater, container, false);
