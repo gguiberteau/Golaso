@@ -21,6 +21,7 @@ public class ModificarPerfilFragment extends Fragment {
     private Button btn_edit;
     private FragmentModificarPerfilBinding binding;
     private SharedPreferences sharedPref;
+    private Requisitos requisitos;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,10 +46,19 @@ public class ModificarPerfilFragment extends Fragment {
         btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putString(getString(R.string.edit_user), modify_user.getText().toString());
-                editor.putString(getString(R.string.edit_password), modify_password.getText().toString());
-                Navigation.findNavController(root).navigate(R.id.action_nav_modificar_perfil_to_nav_profile);
+                requisitos = new Requisitos();
+                if(requisitos.isValidPassword(modify_password.getText().toString().trim())) {
+                    if(requisitos.isValidUser(modify_user.getText().toString().trim())) {
+                        SharedPreferences.Editor editor = sharedPref.edit();
+                        editor.putString(getString(R.string.edit_user), modify_user.getText().toString());
+                        editor.putString(getString(R.string.edit_password), modify_password.getText().toString());
+                        Navigation.findNavController(root).navigate(R.id.action_nav_modificar_perfil_to_nav_profile);
+                    }
+                    else
+                        modify_user.setError("El email de usuario no es válido");
+                }
+                else
+                    modify_password.setError("La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial");
             }
         });
         return root;
