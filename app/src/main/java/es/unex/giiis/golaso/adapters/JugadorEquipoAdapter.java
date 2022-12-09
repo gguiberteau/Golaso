@@ -31,11 +31,11 @@ public class JugadorEquipoAdapter extends RecyclerView.Adapter<JugadorEquipoAdap
     SwitchCompat mSwitch;
     private ItemClickListener clickListener;
 
-    public JugadorEquipoAdapter(Context context, List<Jugador> responseList, int idEquipo, SwitchCompat mSwitch, ItemClickListener clickListener) {
+    public JugadorEquipoAdapter(Context context, List<Jugador> responseList, long idEquipo, SwitchCompat mSwitch, ItemClickListener clickListener) {
         this.context = context;
         this.jugadores = responseList;
         this.jugadoresEquipo = new ArrayList<>();
-        this.idEquipo = idEquipo;
+        this.idEquipo = (int)idEquipo;
         this.mSwitch = mSwitch;
         this.clickListener = clickListener;
     }

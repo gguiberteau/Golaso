@@ -27,7 +27,7 @@ public class JugadoresFragment_equipo extends Fragment implements JugadorEquipoA
     private FragmentJugadoresEquipoBinding binding;
 
     private static final String ARG_PARAM1 = "idEquipo";
-    private int mIdEquipo;
+    private long mIdEquipo;
 
     public static JugadoresFragment_equipo newInstance(long idEquipo) {
         JugadoresFragment_equipo fragment = new JugadoresFragment_equipo();
@@ -41,7 +41,7 @@ public class JugadoresFragment_equipo extends Fragment implements JugadorEquipoA
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mIdEquipo = getArguments().getInt(ARG_PARAM1);
+            mIdEquipo = getArguments().getLong(ARG_PARAM1);
         }
     }
 
@@ -83,9 +83,7 @@ public class JugadoresFragment_equipo extends Fragment implements JugadorEquipoA
     @Override
     public void onItemClick(Jugador jugador) {
         Fragment fragment = JugadorDetailFragment
-                .newInstance(jugador.getNombre(), jugador.getPais(), jugador.getPosicion(), jugador.getEquipo(), jugador.getFoto(),
-                        jugador.getIdJugador(), jugador.getGoles(), jugador.getAsistencias(), jugador.getPartidosJugados(),
-                        jugador.getAñoNac(), jugador.getEdad());
+                .newInstance(jugador);
 
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frameContainer_clas, fragment);

@@ -112,9 +112,9 @@ public class EquipoDetailFragment extends Fragment {
 
         tabEquipo = root.findViewById(R.id.tabEquipo);
 
-        tabEquipo.selectTab(tabEquipo.getTabAt(1));
+        tabEquipo.selectTab(tabEquipo.getTabAt(0));
 
-        Fragment fragment = ResultadosFragment_equipo.newInstance(mId);
+        Fragment fragment = JugadoresFragment_equipo.newInstance(mId);
 
         getChildFragmentManager().beginTransaction()
                 .replace(R.id.frameEquipo, fragment)
