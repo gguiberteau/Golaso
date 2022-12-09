@@ -94,7 +94,6 @@ public class PartidosFragment extends Fragment {
                 }
                 adapter.notifyDataSetChanged();
 
-
             }, year, month, day);
             picker.show();
         });
