@@ -5,24 +5,30 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
+import javax.security.auth.callback.Callback;
+
 import es.unex.giiis.golaso.R;
 import es.unex.giiis.golaso.databinding.FragmentJugadorDetailBinding;
 import es.unex.giiis.golaso.model.Jugador;
+import es.unex.giiis.golaso.ui.clasificacion.ClasificacionFragment;
 
 public class JugadorDetailFragment extends Fragment {
 
@@ -181,7 +187,31 @@ public class JugadorDetailFragment extends Fragment {
 
         });
 
+
+
         return root;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+                    Fragment fragment = getParentFragment();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frameContainer_clas, fragment);
+                    transaction.commit();
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     @Override

@@ -64,9 +64,7 @@ public class GoleadoresFragment_clasificacion extends Fragment implements Golead
     @Override
     public void onItemClick(Jugador jugador) {
         Fragment fragment = JugadorDetailFragment
-                .newInstance(jugador.getNombre(), jugador.getPais(), jugador.getPosicion(), jugador.getEquipo(), jugador.getFoto(),
-                        jugador.getIdJugador(), jugador.getGoles(), jugador.getAsistencias(), jugador.getPartidosJugados(),
-                        jugador.getAñoNac(), jugador.getEdad());
+                .newInstance(jugador);
 
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frameContainer_clas, fragment);

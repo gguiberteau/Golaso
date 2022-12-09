@@ -9,7 +9,12 @@
         android:id="@+id/nav_home"
         android:name="es.unex.giiis.golaso.ui.partidos.PartidosFragment"
         android:label="@string/icon_partidos"
-        tools:layout="@layout/fragment_partidos"/>
+        tools:layout="@layout/fragment_partidos">
+        <action
+            android:id="@+id/action_nav_home_to_nav_table"
+            app:destination="@id/nav_table" />
+    </fragment>
+
     <fragment
         android:id="@+id/nav_fav"
         android:name="es.unex.giiis.golaso.ui.favoritos.FavoritosFragment"
@@ -20,7 +25,39 @@
         android:id="@+id/nav_table"
         android:name="es.unex.giiis.golaso.ui.clasificacion.ClasificacionFragment"
         android:label="@string/icon_clasificacion"
-        tools:layout="@layout/fragment_clasificacion"/>
+        tools:layout="@layout/fragment_clasificacion">
+        <action
+            android:id="@+id/action_nav_table_to_nav_table_tab"
+            app:destination="@id/nav_table_tab" />
+        <action
+            android:id="@+id/action_nav_table_to_nav_table_res"
+            app:destination="@id/nav_table_res" />
+        <action
+            android:id="@+id/action_nav_table_to_nav_table_gol"
+            app:destination="@id/nav_table_gol" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_table_tab"
+        android:name="es.unex.giiis.golaso.ui.clasificacion.ClasificacionFragment_clasificacion"
+        android:label="@string/icon_clasificacion"
+        tools:layout="@layout/fragment_clasificacion_clasificacion"/>
+
+    <fragment
+        android:id="@+id/nav_table_res"
+        android:name="es.unex.giiis.golaso.ui.clasificacion.ResultadosFragment_clasificacion"
+        android:label="@string/results"
+        tools:layout="@layout/fragment_resultados_clasificacion"/>
+
+    <fragment
+        android:id="@+id/nav_table_gol"
+        android:name="es.unex.giiis.golaso.ui.clasificacion.GoleadoresFragment_clasificacion"
+        android:label="Goleadores"
+        tools:layout="@layout/fragment_goleadores_clasificacion">
+        <action
+            android:id="@+id/action_nav_table_gol_to_jugador_detail"
+            app:destination="@id/jugador_detail" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_profile"
@@ -33,5 +70,11 @@
         android:name="es.unex.giiis.golaso.ui.buscar.BuscarFragment"
         android:label="@string/icon_buscar"
         tools:layout="@layout/fragment_buscar"/>
+
+    <fragment
+        android:id="@+id/jugador_detail"
+        android:name="es.unex.giiis.golaso.ui.elementos.JugadorDetailFragment"
+        android:label="@string/player"
+        tools:layout="@layout/fragment_jugador_detail"/>
 
 </navigation>

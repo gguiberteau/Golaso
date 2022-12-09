@@ -54,16 +54,14 @@ public class ClasificacionFragment_clasificacion extends Fragment implements Cla
 
     @Override
     public void onDestroyView() {
-
         super.onDestroyView();
         binding = null;
-
     }
 
     @Override
     public void onItemClick(Equipo equipo) {
         Fragment fragment = EquipoDetailFragment.
-                newInstance(equipo.getNombre(), equipo.getUbicacion(), equipo.getEstadio(), equipo.getEntrenador(), equipo.getLogo(), equipo.getIdEquipo());
+                newInstance(equipo);
 
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frameContainer_clas, fragment);

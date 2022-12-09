@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,16 +18,20 @@ import androidx.annotation.NonNull;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
+import es.unex.giiis.golaso.MainActivity;
 import es.unex.giiis.golaso.R;
 import es.unex.giiis.golaso.databinding.FragmentEquipoDetailBinding;
 import es.unex.giiis.golaso.model.Equipo;
+import es.unex.giiis.golaso.ui.clasificacion.ClasificacionFragment;
 
-public class EquipoDetailFragment extends Fragment {
+public class EquipoDetailFragment extends Fragment implements FragmentManager.OnBackStackChangedListener {
 
     private static final String ARG_PARAM1 = "nombre";
     private static final String ARG_PARAM2 = "ubicacion";
@@ -112,12 +117,13 @@ public class EquipoDetailFragment extends Fragment {
 
         tabEquipo = root.findViewById(R.id.tabEquipo);
 
-        tabEquipo.selectTab(tabEquipo.getTabAt(1));
+        tabEquipo.selectTab(tabEquipo.getTabAt(0));
 
-        Fragment fragment = ResultadosFragment_equipo.newInstance(mId);
+        Fragment fragment = JugadoresFragment_equipo.newInstance(mId);
 
         getChildFragmentManager().beginTransaction()
                 .replace(R.id.frameEquipo, fragment)
+                .addToBackStack(null)
                 .commit();
 
         tabEquipo.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -198,4 +204,8 @@ public class EquipoDetailFragment extends Fragment {
 
     }
 
+    @Override
+    public void onBackStackChanged() {
+
+    }
 }
